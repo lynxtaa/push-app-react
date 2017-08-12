@@ -3,21 +3,35 @@ import PropTypes from 'prop-types'
 import { Redirect } from 'react-router'
 
 import { getSets } from '../store/scheduleSelectors'
+import { saveState } from '../store/localStorage'
 
 import NavPills from './NavPills'
 import PushList from './PushList'
 
-const linkFromDay = week => day => ({ link: `/${week}/${day}`, text: `Day ${day}` })
+class Sets extends React.Component {
+	componentWillUpdate({ match }) {
+		saveState(match.params)
+	}
 
-const Sets = ({ match }) => {
-	const { day, week } = match.params
+	get links() {
+		const { week } = this.props.match.params
 
-	return day ? (
-		<div>
-			<NavPills links={[1, 2, 3].map(linkFromDay(week))} />
-			<PushList sets={getSets(week, day)} />
-		</div>
-	) : <Redirect to={`/${week}/1`} />
+		return [1, 2, 3].map(day => ({
+			link: `/${week}/${day}`,
+			text: `Day ${day}`,
+		}))
+	}
+
+	render() {
+		const { day, week } = this.props.match.params
+
+		return day ? (
+			<div>
+				<NavPills links={this.links} />
+				<PushList sets={getSets(week, day)} />
+			</div>
+		) : <Redirect to={`/${week}/1`} />
+	}
 }
 
 Sets.propTypes = {
