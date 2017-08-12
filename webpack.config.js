@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const merge = require('webpack-merge')
 const {join} = require('path')
 
@@ -48,6 +49,12 @@ const commonConfig = {
 	},
 	plugins: [
 		new HtmlWebpackPlugin({ template: './src/index.html' }),
+		new webpack.ProvidePlugin({
+			jQuery: 'jquery',
+			$: 'jquery',
+			jquery: 'jquery',
+			Tether: 'tether',
+		}),
 	],
 }
 

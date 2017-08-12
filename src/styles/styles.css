@@ -1,10 +1,42 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~toastr/build/toastr.min.css';
+/* @import '~toastr/build/toastr.min.css'; */
 
-#app {
-	font: 14px Arial, sans-serif;
-	color: #4d4d4d;
-	min-width: 550px;
-	max-width: 850px;
-	margin: 0 auto;
+body {
+	font-size: 18px;
+}
+
+.container {
+	max-width: 680px;
+}
+
+.btn {
+	font-size: 1em;
+}
+
+label {
+	font-size: 1em;
+	margin-bottom: 0;
+}
+
+.nav-pills {
+	margin: 1em 0;
+}
+
+.nav-pills .nav-item + .nav-item {
+	margin-left: 0;
+}
+
+.pushlist {
+	padding: 0;
+	list-style-type: none;
+}
+
+.pushlist li {
+	margin-bottom: 1em;
+	text-align: center;
+}
+
+.pushlist li a {
+	text-decoration: none;
+	display: block;
 }

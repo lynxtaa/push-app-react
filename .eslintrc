@@ -80,7 +80,6 @@
 
 		// React Plugin
 		"react/default-props-match-prop-types": 1,
-		"react/forbid-component-props": 1,
 		"react/forbid-prop-types": [1, { "forbid": ["any"] }],
 		"react/no-children-prop": 1,
 		"react/no-danger": 1,
