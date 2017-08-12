@@ -3,21 +3,19 @@ const {resolve} = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const BabiliPlugin = require('babili-webpack-plugin')
 
-const extractStyles = new ExtractTextPlugin({ filename: 'styles/[name].css' })
-
 const GLOBALS = {
 	'process.env.NODE_ENV': JSON.stringify('production'),
 }
 
 module.exports = {
 	devtool: 'source-map',
-	entry: './src/',
+	entry: './src',
 	devServer: { contentBase: resolve(__dirname, 'dist') },
 	module: {
 		rules: [
 			{
 				test: /\.css$/,
-				use: extractStyles.extract({ use: 'css-loader', fallback: 'style-loader' }),
+				use: ExtractTextPlugin.extract({ use: 'css-loader', fallback: 'style-loader' }),
 			},
 
 			{
@@ -36,7 +34,7 @@ module.exports = {
 		}),
 		new webpack.optimize.CommonsChunkPlugin({ name: 'manifest', minChunks: Infinity }),
 
-		extractStyles,
+		new ExtractTextPlugin('styles/[name].css'),
 
 		new webpack.DefinePlugin(GLOBALS),
 		new BabiliPlugin(),

@@ -1,16 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withSchedule from './withSchedule'
+import { Redirect } from 'react-router'
 
-const Sets = ({ match, schedule }) => {
+import { getSets } from '../store/scheduleSelectors'
+
+import NavPills from './NavPills'
+import PushList from './PushList'
+
+const linkFromDay = week => day => ({ link: `/${week}/${day}`, text: `Day ${day}` })
+
+const Sets = ({ match }) => {
 	const { day, week } = match.params
 
-	return <p>{ schedule.find(({ weekNum }) => weekNum == week).days[day - 1].join(',') }</p>
+	return day ? (
+		<div>
+			<NavPills links={[1, 2, 3].map(linkFromDay(week))} />
+			<PushList sets={getSets(week, day)} />
+		</div>
+	) : <Redirect to={`/${week}/1`} />
 }
 
 Sets.propTypes = {
 	match: PropTypes.object.isRequired,
-	schedule: PropTypes.array.isRequired,
 }
 
-export default withSchedule(Sets)
+export default Sets

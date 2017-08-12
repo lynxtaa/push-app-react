@@ -1,21 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import withSchedule from './withSchedule'
 
-import { NavLink } from 'react-router-dom'
+import { getWeekNums } from '../store/scheduleSelectors'
+import NavPills from './NavPills'
 
-const Header = ({ schedule }) => (
-	<ul className="nav nav-pills">
-		{ schedule.map(({ weekNum }) => (
-			<li className="nav-item" key={weekNum}>
-				<NavLink to={`/${weekNum}/1`} className="nav-link">Week {weekNum}</NavLink>
-			</li>
-		)) }
-	</ul>
-)
+const links = getWeekNums().map(week => ({ link: `/${week}`, text: `Week ${week}` }))
 
-Header.propTypes = {
-	schedule: PropTypes.array.isRequired,
-}
+const Header = () => <NavPills links={links} />
 
-export default withSchedule(Header)
+export default Header
