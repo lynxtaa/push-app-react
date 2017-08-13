@@ -36,7 +36,6 @@ label {
 	text-align: center;
 }
 
-.pushlist li a {
-	text-decoration: none;
-	display: block;
+.pushlist li button {
+	width: 100%;
 }

@@ -54,6 +54,7 @@ const commonConfig = {
 			$: 'jquery',
 			jquery: 'jquery',
 			Tether: 'tether',
+			Popper: 'popper.js',
 		}),
 	],
 }

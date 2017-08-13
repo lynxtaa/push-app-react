@@ -16,7 +16,7 @@ class PushListItem extends React.Component {
 	render() {
 		return this.state.visible && (
 			<li>
-				<a className="btn btn-secondary" onClick={this.handleClick}>{this.props.set}</a>
+				<button className="btn btn-outline-secondary" onClick={this.handleClick}>{this.props.set}</button>
 			</li>
 		)
 	}
