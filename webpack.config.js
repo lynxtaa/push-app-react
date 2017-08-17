@@ -53,7 +53,6 @@ const commonConfig = {
 			jQuery: 'jquery',
 			$: 'jquery',
 			jquery: 'jquery',
-			Popper: 'popper.js',
 		}),
 	],
 }
