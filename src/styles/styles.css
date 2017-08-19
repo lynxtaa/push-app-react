@@ -1,5 +1,4 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~toastr/build/toastr.min.css';
 
 body {
 	font-size: 18px;
@@ -33,9 +32,4 @@ label {
 
 .pushlist li {
 	margin-bottom: 1em;
-	text-align: center;
-}
-
-.pushlist li button {
-	width: 100%;
 }

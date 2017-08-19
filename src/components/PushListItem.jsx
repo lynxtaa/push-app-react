@@ -15,7 +15,9 @@ class PushListItem extends React.Component {
 	render() {
 		return (
 			<li>
-				<button className="btn btn-outline-secondary" onClick={this.handleClick}>{this.props.children}</button>
+				<button className="btn btn-outline-secondary w-100" onClick={this.handleClick}>
+					{this.props.children}
+				</button>
 			</li>
 		)
 	}

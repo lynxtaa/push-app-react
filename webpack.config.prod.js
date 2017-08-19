@@ -9,7 +9,7 @@ const GLOBALS = {
 
 module.exports = {
 	devtool: 'source-map',
-	entry: './src',
+	entry: { app: './src' },
 	devServer: { contentBase: resolve(__dirname, 'dist') },
 	module: {
 		rules: [
