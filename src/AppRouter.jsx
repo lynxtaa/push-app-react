@@ -8,7 +8,7 @@ const AppRouter = () => (
 	<Router>
 		<App>
 			<Switch>
-				<Route path="/:week/:day?" component={Sets} />
+				<Route path="/:week(\d)/:day(\d)?" component={Sets} />
 				<Route component={Page404} />
 			</Switch>
 		</App>

@@ -6,7 +6,7 @@ import Timer from './Timer'
 
 const links = getWeekNums().map(week => ({ link: `/${week}`, text: `Week ${week}` }))
 const times = [
-	{ label: '1 min', seconds: 5 },
+	{ label: '1 min', seconds: 60 },
 	{ label: '2 min', seconds: 120 },
 ]
 
