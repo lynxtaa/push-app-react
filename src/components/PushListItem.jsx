@@ -4,26 +4,27 @@ import PropTypes from 'prop-types'
 class PushListItem extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = { visible: true }
 		this.handleClick = this.handleClick.bind(this)
 	}
 
 	handleClick(event) {
 		event.preventDefault()
-		this.setState({ visible: false })
+		this.props.onClick(this.props.id)
 	}
 
 	render() {
-		return this.state.visible && (
+		return (
 			<li>
-				<button className="btn btn-outline-secondary" onClick={this.handleClick}>{this.props.set}</button>
+				<button className="btn btn-outline-secondary" onClick={this.handleClick}>{this.props.children}</button>
 			</li>
 		)
 	}
 }
 
 PushListItem.propTypes = {
-	set: PropTypes.number.isRequired,
+	children: PropTypes.node.isRequired,
+	id: PropTypes.string.isRequired,
+	onClick: PropTypes.func.isRequired,
 }
 
 export default PushListItem
