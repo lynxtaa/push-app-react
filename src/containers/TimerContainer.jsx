@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import TimerButton from './TimerButton'
-import Alert from './Alert'
+import TimerButton from '@components/TimerButton'
+import Alert from '@components/Alert'
+import ButtonGroup from '@components/ButtonGroup'
+import TimerLabel from '@components/TimerLabel'
 
 class Timer extends React.Component {
 	constructor(props) {
@@ -47,7 +49,7 @@ class Timer extends React.Component {
 			<div>
 				{countdown === 0 && <Alert onClick={this.resetCountdown}><b>Do next!</b></Alert>}
 
-				<div className="btn-group">
+				<ButtonGroup>
 					{this.props.times.map(({ seconds, label }) => (
 						<TimerButton
 							active={counter == seconds}
@@ -58,8 +60,8 @@ class Timer extends React.Component {
 							{label}
 						</TimerButton>
 					))}
-					<label className="btn btn-outline-info" onClick={this.runTimer}>{countdown}</label>
-				</div>
+					<TimerLabel onClick={this.runTimer}>{countdown}</TimerLabel>
+				</ButtonGroup>
 			</div>
 		)
 	}

@@ -19,6 +19,10 @@ const commonConfig = {
 		publicPath: '/',
 	},
 	resolve: {
+		alias: {
+			'@components': join(PATHS.app, 'components'),
+			'@containers': join(PATHS.app, 'containers'),
+		},
 		extensions: ['.js', '.json', '.jsx'],
 	},
 	module: {

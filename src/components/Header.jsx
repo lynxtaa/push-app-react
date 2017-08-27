@@ -1,20 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import { getWeekNums } from '../store/scheduleSelectors'
-import NavPills from './NavPills'
-import Timer from './Timer'
+const Header = ({ children }) => <header>{children}</header>
 
-const links = getWeekNums().map(week => ({ link: `/${week}`, text: `Week ${week}` }))
-const times = [
-	{ label: '1 min', seconds: 60 },
-	{ label: '2 min', seconds: 120 },
-]
-
-const Header = () => (
-	<header>
-		<NavPills links={links} />
-		<Timer times={times} />
-	</header>
-)
+Header.propTypes = {
+	children: PropTypes.node.isRequired,
+}
 
 export default Header

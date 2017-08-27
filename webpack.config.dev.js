@@ -7,7 +7,7 @@ const PATHS = {
 }
 
 module.exports = {
-	devtool: 'cheap-module-source-map',
+	devtool: 'cheap-module-eval-source-map',
 
 	devServer: {
 		hot: true,

@@ -5,8 +5,8 @@ import { Redirect } from 'react-router'
 import { getSets } from '../store/scheduleSelectors'
 import { saveState } from '../store/localStorage'
 
-import NavPills from './NavPills'
-import PushList from './PushList'
+import NavPills from '@components/NavPills'
+import PushListContainer from './PushListContainer'
 
 class Sets extends React.Component {
 	componentWillUpdate({ match }) {
@@ -28,7 +28,7 @@ class Sets extends React.Component {
 		return day ? (
 			<div>
 				<NavPills links={this.links} />
-				<PushList sets={getSets(week, day)} />
+				<PushListContainer sets={getSets(week, day)} />
 			</div>
 		) : <Redirect to={`/${week}/1`} />
 	}

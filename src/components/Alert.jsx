@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import withPortal from './withPortal'
+import withPortal from '../HOCs/withPortal'
 
 const Alert = ({ children, onClick }) => (
 	<div className="container alert alert-warning alert-dismissible fade show" role="alert">

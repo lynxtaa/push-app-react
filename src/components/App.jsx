@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Header from './Header'
-import {withRouter} from 'react-router'
+import { withRouter } from 'react-router'
+
+import HeaderContainer from '@containers/HeaderContainer'
 
 const App = ({ children }) => (
 	<div className="container">
-		<Header />
+		<HeaderContainer />
 		{children}
 	</div>
 )
