@@ -17,10 +17,6 @@ label {
 	margin-bottom: 0;
 }
 
-.nav-pills {
-	margin: 1em 0;
-}
-
 .nav-pills .nav-item + .nav-item {
 	margin-left: 0;
 }
@@ -30,6 +26,6 @@ label {
 	list-style-type: none;
 }
 
-.pushlist li {
-	margin-bottom: 1em;
+details {
+	white-space: pre-wrap;
 }

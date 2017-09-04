@@ -46,7 +46,7 @@ class Timer extends React.Component {
 		const { counter, countdown } = this.state
 
 		return (
-			<div>
+			<div className="mb-3">
 				{countdown === 0 && <Alert onClick={this.resetCountdown}><b>Do next!</b></Alert>}
 
 				<ButtonGroup>
