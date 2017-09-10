@@ -7,28 +7,35 @@ import PushListItem from '@components/PushListItem'
 class PushListContainer extends React.Component {
 	constructor(props) {
 		super(props)
-		this.state = { sets: this.props.sets }
+		this.state = { hidden: [] }
 		this.hideSet = this.hideSet.bind(this)
 	}
 
 	componentWillReceiveProps({ sets }) {
 		if (sets !== this.props.sets) {
-			this.setState({ sets })
+			this.setState({ hidden: [] })
 		}
 	}
 
 	hideSet(id) {
-		this.setState(({ sets }) => ({
-			sets: sets.filter(set => set.id !== id),
+		this.setState(({ hidden }) => ({
+			hidden: [...hidden, id],
 		}))
 	}
 
 	render() {
 		return (
 			<PushList>
-				{this.state.sets.map(({ id, set }) =>
-					<PushListItem key={id} id={id} onClick={this.hideSet}>{set}</PushListItem>
-				)}
+				{this.props.sets.map(({ id, set }) => (
+					<PushListItem
+						key={id}
+						id={id}
+						className={this.state.hidden.includes(id) ? 'hide' : undefined}
+						onClick={this.hideSet}
+					>
+						{set}
+					</PushListItem>
+				))}
 			</PushList>
 		)
 	}

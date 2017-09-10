@@ -21,9 +21,20 @@ label {
 	margin-left: 0;
 }
 
-.pushlist {
-	padding: 0;
-	list-style-type: none;
+.pushlist li {
+	height: 40px;
+}
+
+.pushlist li.hide {
+	visibility: hidden;
+	height: 0;
+	margin: 0 !important;
+	opacity: 0;
+	transition:
+		visibility 0s .3s,
+		height .3s .3s,
+		margin .3s .3s,
+		opacity .3s;
 }
 
 details {
