@@ -12,13 +12,13 @@ body {
 	font-size: 1em;
 }
 
+.btn-primary:not([disabled]):not(.disabled).active {
+	box-shadow: none;
+}
+
 label {
 	font-size: 1em;
 	margin-bottom: 0;
-}
-
-.nav-pills .nav-item + .nav-item {
-	margin-left: 0;
 }
 
 .pushlist li {

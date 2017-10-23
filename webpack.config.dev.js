@@ -10,7 +10,7 @@ module.exports = {
 	devtool: 'cheap-module-eval-source-map',
 
 	devServer: {
-		hot: true,
+		hotOnly: true,
 		publicPath: '/',
 		contentBase: PATHS.dist,
 		historyApiFallback: true,
@@ -44,8 +44,6 @@ module.exports = {
 
 	entry: [
 		'react-hot-loader/patch',
-		'webpack-dev-server/client?http://localhost:8080',
-		'webpack/hot/only-dev-server',
 		PATHS.app,
 	],
 
