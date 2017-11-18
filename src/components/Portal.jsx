@@ -28,8 +28,8 @@ class Portal extends React.Component {
 }
 
 Portal.propTypes = {
-	id: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
+	id: PropTypes.string.isRequired,
 }
 
 export default Portal
