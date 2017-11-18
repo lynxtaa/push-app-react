@@ -1,12 +1,38 @@
+const { join } = require('path')
 const express = require('express')
-const {join} = require('path')
+const morgan = require('morgan')
+const rfs = require('rotating-file-stream')
+const wait = require('./middleware/wait')
 
-const PORT = process.env.PORT || 8080
+const app = express()
+
+app.set('port', process.env.PORT || 3000)
+
 const distFolder = join(__dirname, 'dist')
+app.use(express.static(distFolder))
 
-express()
-	.use(express.static(distFolder))
-	.listen(PORT, err => err ?
-		console.log(err) :
-		console.log(`Server started on: http://localhost:${PORT}`)
-	)
+if (app.get('env') == 'production') {
+	const accessLogStream = rfs('access.log', { interval: '1d', path: __dirname })
+	app.use(morgan('short', { stream: accessLogStream }))
+}
+else {
+	app.use(morgan('dev'))
+}
+
+app.use(wait(1000))  // emulate slow network
+
+require('./controllers')(app)
+
+/* eslint-disable no-console, no-process-exit */
+app.listen(app.get('port'), err => {
+	console.log(err || `Listening http://localhost:${app.get('port')} (${app.get('env')})`)
+})
+
+process
+	.on('uncaughtException', err => {
+		console.log(`Uncaught Exception: ${err}`)
+		process.exit(1)
+	})
+	.on('unhandledRejection', (reason, p) => {
+		console.log(`Unhandled Rejection at Promise ${p} reason: ${reason}`)
+})

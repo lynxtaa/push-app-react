@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { getWeekNums } from '../store/scheduleSelectors'
 import Header from '@components/Header'
 import NavPills from '@components/NavPills'
 import TimerContainer from '@containers/TimerContainer'
 
-const links = getWeekNums().map(week => ({ link: `/${week}`, text: `Week ${week}` }))
+const links = [1, 2, 3, 4, 5, 6].map(week => ({ link: `/${week}`, text: `Week ${week}` }))
 const times = [
 	{ label: '1 min', seconds: 60 },
 	{ label: '2 min', seconds: 120 },
