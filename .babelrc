@@ -1,4 +1,4 @@
 {
-	"presets": ["react"],
-	"plugins": ["transform-object-rest-spread"]
+	"presets": ["@babel/react"],
+	"plugins": ["@babel/syntax-object-rest-spread"]
 }
