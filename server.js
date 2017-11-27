@@ -1,5 +1,6 @@
 const { join } = require('path')
 const express = require('express')
+const compression = require('compression')
 const morgan = require('morgan')
 const rfs = require('rotating-file-stream')
 const wait = require('./middleware/wait')
@@ -7,6 +8,8 @@ const wait = require('./middleware/wait')
 const app = express()
 
 app.set('port', process.env.PORT || 3000)
+
+app.use(compression())
 
 const distFolder = join(__dirname, 'dist')
 app.use(express.static(distFolder))
@@ -19,7 +22,9 @@ else {
 	app.use(morgan('dev'))
 }
 
-app.use(wait(1000))  // emulate slow network
+if (app.get('env') == 'development') {
+	app.use(wait(1000))  // emulate slow network
+}
 
 require('./controllers')(app)
 
