@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const {join} = require('path')
+const { join } = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -13,11 +13,6 @@ const PATHS = {
 }
 
 const commonConfig = {
-	output: {
-		filename: 'js/[name].bundle.js',
-		path: PATHS.dist,
-		publicPath: '/',
-	},
 	resolve: {
 		alias: {
 			'@components': join(PATHS.app, 'components'),
@@ -46,7 +41,7 @@ const commonConfig = {
 				test: /\.(eot|ttf|woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
 				use: {
 					loader: 'file-loader',
-					options: { name: 'fonts/[name].[ext]' },
+					options: { name: 'fonts/[name].[hash:8].[ext]' },
 				},
 			},
 		],
