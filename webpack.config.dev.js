@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const {join} = require('path')
+const { join } = require('path')
 
 const PATHS = {
 	app: join(__dirname, 'src'),

@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const NavPills = ({ links }) => (
 	<ul className="nav nav-pills mb-3">
-		{ links.map(({link, text}) => (
+		{ links.map(({ link, text }) => (
 			<li className="nav-item" key={link}>
 				<NavLink to={link} className="nav-link">{text}</NavLink>
 			</li>

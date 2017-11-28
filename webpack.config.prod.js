@@ -41,7 +41,7 @@ module.exports = {
 	plugins: [
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
-			minChunks: ({resource}) => resource && resource.match(/node_modules.*\.js$/),
+			minChunks: ({ resource }) => resource && resource.match(/node_modules.*\.js$/),
 		}),
 		new webpack.optimize.CommonsChunkPlugin({ name: 'manifest', minChunks: Infinity }),
 
