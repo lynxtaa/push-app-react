@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router'
-
-import { saveState } from '../store/localStorage'
+import idbKeyval from 'idb-keyval'
 
 import NavPills from '@components/NavPills'
 import PushListContainer from './PushListContainer'
@@ -22,7 +21,7 @@ class Sets extends React.Component {
 	}
 
 	componentWillUpdate({ match }) {
-		saveState(match.params)
+		idbKeyval.set('route', match.params)
 	}
 
 	get links() {

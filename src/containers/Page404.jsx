@@ -1,11 +1,26 @@
 import React from 'react'
 import { Redirect } from 'react-router'
-import { loadState } from '../store/localStorage'
+import idbKeyval from 'idb-keyval'
 
-const Page404Container = () => {
-	const { day, week } = loadState()
+class Page404Container extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = { day: null, week: null }
+	}
 
-	return <Redirect to={`/${week || 1}/${day || 1}`} />
+	componentDidMount() {
+		idbKeyval
+			.get('route')
+			.then(data => {
+				this.setState(data || { week: 1, day: 1 })
+			})
+	}
+
+	render() {
+		const { day, week } = this.state
+
+		return day !== null && week !== null && <Redirect to={`/${week}/${day}`} />
+	}
 }
 
 export default Page404Container
