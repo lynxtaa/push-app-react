@@ -14,7 +14,7 @@ module.exports = {
 		publicPath: '/',
 		contentBase: PATHS.dist,
 		historyApiFallback: true,
-		proxy: { "/api": "http://localhost:3000" },
+		proxy: { "/": "http://localhost:3000" },
 
 		stats: {
 			assets: false,
