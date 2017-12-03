@@ -1,4 +1,4 @@
 {
 	"presets": ["@babel/react"],
-	"plugins": ["@babel/syntax-object-rest-spread"]
+	"plugins": ["@babel/proposal-object-rest-spread"]
 }
