@@ -11,10 +11,9 @@ module.exports = {
 
 	devServer: {
 		hotOnly: true,
-		publicPath: '/',
 		contentBase: PATHS.dist,
 		historyApiFallback: true,
-		proxy: { "/": "http://localhost:3000" },
+		proxy: { "/api": "http://localhost:3000" },
 
 		stats: {
 			assets: false,
@@ -51,6 +50,7 @@ module.exports = {
 
 	output: {
 		devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
+		publicPath: 'http://localhost:8080/',
 	},
 
 	module: {

@@ -50,11 +50,6 @@ const commonConfig = {
 	],
 }
 
-module.exports = function(env) {
-	process.env.BABEL_ENV = env
-
-	if (env == 'production') {
-		return merge(commonConfig, productionConfig)
-	}
-	return merge(commonConfig, developmentConfig)
-}
+module.exports = env => env == 'production' ?
+	merge(commonConfig, productionConfig) :
+	merge(commonConfig, developmentConfig)
