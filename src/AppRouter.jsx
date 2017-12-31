@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { hot } from 'react-hot-loader'
 import App from '@components/App'
 import Sets from '@containers/Sets'
 import Page404 from '@containers/Page404'
@@ -15,4 +16,4 @@ const AppRouter = () => (
 	</Router>
 )
 
-export default AppRouter
+export default hot(module)(AppRouter)

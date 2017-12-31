@@ -12,6 +12,7 @@ const PATHS = {
 }
 
 const commonConfig = {
+	entry: { app: PATHS.app },
 	resolve: {
 		alias: {
 			'@components': join(PATHS.app, 'components'),

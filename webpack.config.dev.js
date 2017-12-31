@@ -2,7 +2,6 @@ const webpack = require('webpack')
 const { join } = require('path')
 
 const PATHS = {
-	app: join(__dirname, 'src'),
 	dist: join(__dirname, 'dist'),
 }
 
@@ -42,11 +41,6 @@ module.exports = {
 			warnings: true,
 		},
 	},
-
-	entry: [
-		'react-hot-loader/patch',
-		PATHS.app,
-	],
 
 	output: {
 		devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',

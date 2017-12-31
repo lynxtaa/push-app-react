@@ -21,7 +21,6 @@ module.exports = {
 		publicPath: '/',
 	},
 	devtool: 'source-map',
-	entry: { app: './src' },
 	module: {
 		rules: [
 			{
