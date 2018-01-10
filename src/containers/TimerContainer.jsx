@@ -12,26 +12,20 @@ class Timer extends React.Component {
 
 		const [{ seconds }] = this.props.times
 		this.state = { counter: seconds, countdown: seconds }
-
-		this.handleClick = this.handleClick.bind(this)
-		this.resetCountdown = this.resetCountdown.bind(this)
-		this.runTimer = this.runTimer.bind(this)
 	}
 
-	handleClick(value) {
+	handleClick = value => {
 		this.stopTimer()
 		this.setState({ counter: value, countdown: value })
 	}
 
-	resetCountdown() {
-		this.setState(prev => ({ countdown: prev.counter }))
-	}
+	resetCountdown = () => this.setState(prev => ({ countdown: prev.counter }))
 
 	stopTimer() {
 		clearInterval(this.interval)
 	}
 
-	runTimer() {
+	runTimer = () => {
 		this.interval = setInterval(() => {
 			if (this.state.countdown > 0) {
 				this.setState(prev => ({ countdown: prev.countdown - 1 }))

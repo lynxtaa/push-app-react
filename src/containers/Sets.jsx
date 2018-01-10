@@ -7,10 +7,7 @@ import NavPills from '@components/NavPills'
 import PushListContainer from './PushListContainer'
 
 class Sets extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = { schedule: null }
-	}
+	state = { schedule: null }
 
 	componentDidMount() {
 		fetch('/api/schedule')

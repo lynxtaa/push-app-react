@@ -1,0 +1,7 @@
+{
+	"parser": "babel-eslint",
+	"parserOptions": {},
+	"rules": {
+		"no-invalid-this": 0
+	}
+}

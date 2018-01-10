@@ -2,10 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class PushListItem extends React.Component {
-	constructor(props) {
-		super(props)
-		this.handleClick = () => this.props.onClick(this.props.id)
-	}
+	handleClick = () => this.props.onClick(this.props.id)
 
 	render() {
 		return (

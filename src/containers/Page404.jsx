@@ -3,10 +3,7 @@ import { Redirect } from 'react-router'
 import idbKeyval from 'idb-keyval'
 
 class Page404Container extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = { day: null, week: null }
-	}
+	state = { day: null, week: null }
 
 	componentDidMount() {
 		idbKeyval

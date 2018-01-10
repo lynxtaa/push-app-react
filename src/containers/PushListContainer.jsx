@@ -5,11 +5,7 @@ import PushList from '@components/PushList'
 import PushListItem from '@components/PushListItem'
 
 class PushListContainer extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = { hidden: [] }
-		this.hideSet = this.hideSet.bind(this)
-	}
+	state = { hidden: [] }
 
 	componentWillReceiveProps({ sets }) {
 		if (sets !== this.props.sets) {
@@ -17,11 +13,9 @@ class PushListContainer extends React.Component {
 		}
 	}
 
-	hideSet(id) {
-		this.setState(({ hidden }) => ({
-			hidden: [...hidden, id],
-		}))
-	}
+	hideSet = id => this.setState(
+		({ hidden }) => ({ hidden: [...hidden, id] })
+	)
 
 	render() {
 		return (
