@@ -7,11 +7,9 @@ import ButtonGroup from '@components/ButtonGroup'
 import TimerLabel from '@components/TimerLabel'
 
 class Timer extends React.Component {
-	constructor(props) {
-		super(props)
-
-		const [{ seconds }] = this.props.times
-		this.state = { counter: seconds, countdown: seconds }
+	state = {
+		countdown: this.props.times[0].seconds,
+		counter: this.props.times[0].seconds,
 	}
 
 	handleClick = value => {
@@ -21,19 +19,22 @@ class Timer extends React.Component {
 
 	resetCountdown = () => this.setState(prev => ({ countdown: prev.counter }))
 
-	stopTimer() {
+	stopTimer = () => {
 		clearInterval(this.interval)
+		this.interval = false
 	}
 
-	runTimer = () => {
-		this.interval = setInterval(() => {
-			if (this.state.countdown > 0) {
-				this.setState(prev => ({ countdown: prev.countdown - 1 }))
-			}
-			else {
+	toogleTimer = () => {
+		if (this.interval) {
+			this.stopTimer()
+			this.resetCountdown()
+		}
+		else {
+			this.interval = setInterval(() => this.state.countdown > 0 ?
+				this.setState(prev => ({ countdown: prev.countdown - 1 })) :
 				this.stopTimer()
-			}
-		}, 1000)
+			, 1000)
+		}
 	}
 
 	render() {
@@ -54,7 +55,7 @@ class Timer extends React.Component {
 							{label}
 						</TimerButton>
 					))}
-					<TimerLabel onClick={this.runTimer}>{countdown}</TimerLabel>
+					<TimerLabel onClick={this.toogleTimer}>{countdown}</TimerLabel>
 				</ButtonGroup>
 			</div>
 		)

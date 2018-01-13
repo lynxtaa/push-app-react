@@ -64,7 +64,6 @@
 		"arrow-parens": [1, "as-needed"],
 		"arrow-spacing": 1,
 		"generator-star-spacing": 1,
-		"no-confusing-arrow": [1, { "allowParens": true }],
 		"no-duplicate-imports": 2,
 		"no-useless-computed-key": 1,
 		"no-useless-constructor": 1,
