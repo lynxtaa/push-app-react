@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const { join } = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
-const MinifyPlugin = require('babel-minify-webpack-plugin')
+const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
 
 const PATHS = {
 	app: join(__dirname, 'src'),
@@ -50,7 +50,7 @@ module.exports = {
 		}),
 
 		new webpack.DefinePlugin(GLOBALS),
-		new MinifyPlugin(),
+		new UglifyWebpackPlugin({ parallel: true, sourceMap: true }),
 		new OfflinePlugin(),
 	],
 }
