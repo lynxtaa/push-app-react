@@ -17,13 +17,12 @@ app.use(express.static(distFolder))
 if (app.get('env') == 'production') {
 	const accessLogStream = rfs('access.log', { interval: '1d', path: __dirname })
 	app.use(morgan('short', { stream: accessLogStream }))
-}
-else {
+} else {
 	app.use(morgan('dev'))
 }
 
 if (app.get('env') == 'development') {
-	app.use(wait(1000))  // emulate slow network
+	app.use(wait(1000)) // emulate slow network
 }
 
 require('./controllers')(app)
@@ -40,4 +39,4 @@ process
 	})
 	.on('unhandledRejection', (reason, p) => {
 		console.log(`Unhandled Rejection at Promise ${p} reason: ${reason}`)
-})
+	})

@@ -9,7 +9,7 @@ class TimerButton extends React.Component {
 
 		return (
 			<label className={'btn btn-primary' + (active ? ' active' : '')} onClick={this.handleClick}>
-				{ children }
+				{children}
 			</label>
 		)
 	}

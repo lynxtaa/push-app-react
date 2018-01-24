@@ -43,8 +43,8 @@ class Sets extends React.Component {
 		}
 
 		const sets = schedule
-			.find(({ weekNum }) => weekNum == week).days[day - 1]
-			.map((set, i) => ({ id: `${week}-${day}-${i}`, set }))
+			.find(({ weekNum }) => weekNum == week)
+			.days[day - 1].map((set, i) => ({ id: `${week}-${day}-${i}`, set }))
 
 		return (
 			<div>

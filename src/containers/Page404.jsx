@@ -6,11 +6,9 @@ class Page404Container extends React.Component {
 	state = { day: null, week: null }
 
 	componentDidMount() {
-		idbKeyval
-			.get('route')
-			.then(data => {
-				this.setState(data || { week: 1, day: 1 })
-			})
+		idbKeyval.get('route').then(data => {
+			this.setState(data || { week: 1, day: 1 })
+		})
 	}
 
 	render() {

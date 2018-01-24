@@ -13,9 +13,7 @@ class PushListContainer extends React.Component {
 		}
 	}
 
-	hideSet = id => this.setState(
-		({ hidden }) => ({ hidden: [...hidden, id] })
-	)
+	hideSet = id => this.setState(({ hidden }) => ({ hidden: [...hidden, id] }))
 
 	render() {
 		return (
@@ -36,10 +34,12 @@ class PushListContainer extends React.Component {
 }
 
 PushListContainer.propTypes = {
-	sets: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		set: PropTypes.number.isRequired,
-	})).isRequired,
+	sets: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			set: PropTypes.number.isRequired,
+		}),
+	).isRequired,
 }
 
 export default PushListContainer

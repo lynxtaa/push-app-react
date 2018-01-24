@@ -5,19 +5,23 @@ import { NavLink } from 'react-router-dom'
 
 const NavPills = ({ links }) => (
 	<ul className="nav nav-pills mb-3">
-		{ links.map(({ link, text }) => (
+		{links.map(({ link, text }) => (
 			<li className="nav-item" key={link}>
-				<NavLink to={link} className="nav-link">{text}</NavLink>
+				<NavLink to={link} className="nav-link">
+					{text}
+				</NavLink>
 			</li>
-		)) }
+		))}
 	</ul>
 )
 
 NavPills.propTypes = {
-	links: PropTypes.arrayOf(PropTypes.shape({
-		link: PropTypes.string.isRequired,
-		text: PropTypes.string.isRequired,
-	})).isRequired,
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			link: PropTypes.string.isRequired,
+			text: PropTypes.string.isRequired,
+		}),
+	).isRequired,
 }
 
 export default NavPills

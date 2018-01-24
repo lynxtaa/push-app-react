@@ -28,12 +28,14 @@ class Timer extends React.Component {
 		if (this.interval) {
 			this.stopTimer()
 			this.resetCountdown()
-		}
-		else {
-			this.interval = setInterval(() => this.state.countdown > 0 ?
-				this.setState(prev => ({ countdown: prev.countdown - 1 })) :
-				this.stopTimer()
-			, 1000)
+		} else {
+			this.interval = setInterval(
+				() =>
+					this.state.countdown > 0
+						? this.setState(prev => ({ countdown: prev.countdown - 1 }))
+						: this.stopTimer(),
+				1000,
+			)
 		}
 	}
 
@@ -42,7 +44,11 @@ class Timer extends React.Component {
 
 		return (
 			<div className="mb-3">
-				{countdown === 0 && <Alert onClick={this.resetCountdown}><b>Do next!</b></Alert>}
+				{countdown === 0 && (
+					<Alert onClick={this.resetCountdown}>
+						<b>Do next!</b>
+					</Alert>
+				)}
 
 				<ButtonGroup>
 					{this.props.times.map(({ seconds, label }) => (
@@ -63,11 +69,12 @@ class Timer extends React.Component {
 }
 
 Timer.propTypes = {
-	times: PropTypes.arrayOf(PropTypes.shape({
-		seconds: PropTypes.number.isRequired,
-		label: PropTypes.string.isRequired,
-	})).isRequired,
+	times: PropTypes.arrayOf(
+		PropTypes.shape({
+			seconds: PropTypes.number.isRequired,
+			label: PropTypes.string.isRequired,
+		}),
+	).isRequired,
 }
 
 export default Timer
-

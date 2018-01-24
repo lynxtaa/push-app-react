@@ -8,7 +8,7 @@ const Alert = ({ children, onClick }) => (
 			<button type="button" className="close" onClick={onClick} aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
-			{ children }
+			{children}
 		</div>
 	</Portal>
 )

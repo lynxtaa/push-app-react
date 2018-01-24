@@ -30,11 +30,7 @@ label {
 	height: 0;
 	margin: 0 !important;
 	opacity: 0;
-	transition:
-		visibility 0s .3s,
-		height .3s .3s,
-		margin .3s .3s,
-		opacity .3s;
+	transition: visibility 0s 0.3s, height 0.3s 0.3s, margin 0.3s 0.3s, opacity 0.3s;
 }
 
 details {

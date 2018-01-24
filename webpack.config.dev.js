@@ -12,7 +12,7 @@ module.exports = {
 		hotOnly: true,
 		contentBase: PATHS.dist,
 		historyApiFallback: true,
-		proxy: { "/api": "http://localhost:3000" },
+		proxy: { '/api': 'http://localhost:3000' },
 
 		stats: {
 			assets: false,
@@ -61,8 +61,5 @@ module.exports = {
 		],
 	},
 
-	plugins: [
-		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin(),
-	],
+	plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
 }

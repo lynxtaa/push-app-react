@@ -46,11 +46,10 @@ const commonConfig = {
 			},
 		],
 	},
-	plugins: [
-		new HtmlWebpackPlugin({ template: './src/index.html' }),
-	],
+	plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
 }
 
-module.exports = env => env == 'production' ?
-	merge(commonConfig, productionConfig) :
-	merge(commonConfig, developmentConfig)
+module.exports = env =>
+	env == 'production'
+		? merge(commonConfig, productionConfig)
+		: merge(commonConfig, developmentConfig)
