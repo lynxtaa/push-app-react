@@ -78,6 +78,7 @@
 		"react/no-multi-comp": 1,
 		"react/no-render-return-value": 1,
 		"react/no-string-refs": 1,
+		"react/no-this-in-sfc": 2,
 		"react/no-typos": 2,
 		"react/no-unescaped-entities": 1,
 		"react/no-unknown-property": 1,
@@ -107,6 +108,7 @@
 		"react/no-redundant-should-component-update": 1,
 		"react/jsx-no-undef": 1,
 		"react/jsx-pascal-case": 1,
+		"react/jsx-sort-default-props": 1,
 		"react/jsx-uses-react": 1,
 		"react/jsx-uses-vars": 1
 	}
