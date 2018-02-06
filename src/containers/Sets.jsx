@@ -17,8 +17,8 @@ class Sets extends React.Component {
 			})
 	}
 
-	componentWillUpdate({ match }) {
-		idbKeyval.set('route', match.params)
+	componentDidUpdate() {
+		idbKeyval.set('route', this.props.match.params)
 	}
 
 	get links() {
