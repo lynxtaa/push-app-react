@@ -35,7 +35,7 @@ module.exports = {
 			publicPath: false,
 			reasons: false,
 			source: false,
-			timings: false,
+			timings: true,
 			usedExports: false,
 			version: false,
 			warnings: true,
