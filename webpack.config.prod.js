@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const { join } = require('path')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
@@ -38,6 +39,8 @@ module.exports = {
 		],
 	},
 	plugins: [
+		new CleanWebpackPlugin(PATHS.dist),
+
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			minChunks: ({ resource }) => resource && resource.match(/node_modules.*\.js$/),
