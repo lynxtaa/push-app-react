@@ -50,15 +50,14 @@
     "uglifyjs-webpack-plugin": "^1.2.0",
     "url-loader": "^0.6.2",
     "webpack": "^3.11.0",
-    "webpack-dev-server": "^2.11.1",
-    "webpack-merge": "^4.1.2"
+    "webpack-dev-server": "^2.11.1"
   },
   "scripts": {
     "precommit": "lint-staged",
     "start": "npm run start-app && npm run server:dev",
-    "start-app": "webpack-dev-server --env development --progress",
+    "start-app": "webpack-dev-server --config config/webpack.config.dev.js --progress",
     "build": "npm run build-app && npm run server:prod",
-    "build-app": "webpack --env production --profile",
+    "build-app": "webpack --config config/webpack.config.prod.js --profile",
     "lint": "eslint --ext .jsx,.js controllers models src *.js",
     "lint:watch": "npm run lint -- --watch",
     "server:dev": "node server.js",
