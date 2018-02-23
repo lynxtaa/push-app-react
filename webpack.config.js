@@ -49,7 +49,10 @@ const commonConfig = {
 	plugins: [new HtmlWebpackPlugin({ template: './src/index.html' })],
 }
 
-module.exports = env =>
-	env == 'production'
+module.exports = function(env) {
+	process.env.NODE_ENV = env
+
+	return env == 'production'
 		? merge(commonConfig, productionConfig)
 		: merge(commonConfig, developmentConfig)
+}
