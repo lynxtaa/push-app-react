@@ -4,7 +4,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
-const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
 
 const paths = require('./paths')
 
@@ -32,6 +31,7 @@ module.exports = {
 	},
 	devtool: 'source-map',
 	module: {
+		strictExportPresence: true,
 		rules: [
 			{
 				test: /\.jsx?$/,
@@ -103,7 +103,12 @@ module.exports = {
 		}),
 
 		new webpack.DefinePlugin(GLOBALS),
-		new UglifyWebpackPlugin({ parallel: true, sourceMap: true }),
+
+		new webpack.optimize.UglifyJsPlugin({
+			output: { comments: false, ascii_only: true },
+			sourceMap: true,
+		}),
+
 		new OfflinePlugin(),
 	],
 }
