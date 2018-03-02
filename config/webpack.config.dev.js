@@ -11,8 +11,9 @@ const GLOBALS = {
 }
 
 module.exports = {
-	entry: { app: paths.appSrc },
+	mode: 'development',
 	devtool: 'cheap-module-eval-source-map',
+	entry: { app: paths.appSrc },
 	output: {
 		path: paths.appDist,
 		filename: 'js/bundle.js',

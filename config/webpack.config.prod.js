@@ -15,6 +15,7 @@ const GLOBALS = {
 
 module.exports = {
 	bail: true,
+	devtool: 'source-map',
 	entry: { app: paths.appSrc },
 	output: {
 		chunkFilename: 'js/[name].[chunkhash:8].chunk.js',
@@ -29,7 +30,18 @@ module.exports = {
 		},
 		extensions: ['.js', '.json', '.jsx'],
 	},
-	devtool: 'source-map',
+	optimization: {
+		splitChunks: {
+			cacheGroups: {
+				vendor: {
+					test: /node_modules/,
+					chunks: 'initial',
+					name: 'vendor',
+					enforce: true,
+				},
+			},
+		},
+	},
 	module: {
 		strictExportPresence: true,
 		rules: [
@@ -91,12 +103,6 @@ module.exports = {
 			},
 		}),
 
-		new webpack.optimize.CommonsChunkPlugin({
-			name: 'vendor',
-			minChunks: ({ resource }) => resource && resource.match(/node_modules.*\.js$/),
-		}),
-		new webpack.optimize.CommonsChunkPlugin({ name: 'manifest', minChunks: Infinity }),
-
 		new ExtractTextPlugin({
 			allChunks: true,
 			filename: 'styles/[name].[contenthash:8].css',
@@ -104,11 +110,8 @@ module.exports = {
 
 		new webpack.DefinePlugin(GLOBALS),
 
-		new webpack.optimize.UglifyJsPlugin({
-			output: { comments: false, ascii_only: true },
-			sourceMap: true,
+		new OfflinePlugin({
+			ServiceWorker: { minify: false },
 		}),
-
-		new OfflinePlugin(),
 	],
 }
