@@ -27,16 +27,7 @@ module.exports = {
 		extensions: ['.js', '.json', '.jsx'],
 	},
 	optimization: {
-		splitChunks: {
-			cacheGroups: {
-				vendor: {
-					test: /node_modules/,
-					chunks: 'initial',
-					name: 'vendor',
-					enforce: true,
-				},
-			},
-		},
+		splitChunks: { chunks: 'all' },
 	},
 	module: {
 		strictExportPresence: true,
