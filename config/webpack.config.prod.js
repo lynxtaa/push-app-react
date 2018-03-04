@@ -9,10 +9,6 @@ const paths = require('./paths')
 
 process.env.NODE_ENV = 'production'
 
-const GLOBALS = {
-	'process.env.NODE_ENV': JSON.stringify('production'),
-}
-
 module.exports = {
 	bail: true,
 	devtool: 'source-map',
@@ -107,8 +103,6 @@ module.exports = {
 			allChunks: true,
 			filename: 'styles/[name].[contenthash:8].css',
 		}),
-
-		new webpack.DefinePlugin(GLOBALS),
 
 		new OfflinePlugin({
 			ServiceWorker: { minify: false },

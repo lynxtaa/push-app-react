@@ -6,10 +6,6 @@ const paths = require('./paths')
 
 process.env.NODE_ENV = 'development'
 
-const GLOBALS = {
-	'process.env.NODE_ENV': JSON.stringify('development'),
-}
-
 module.exports = {
 	mode: 'development',
 	devtool: 'cheap-module-eval-source-map',
@@ -100,9 +96,7 @@ module.exports = {
 	},
 
 	plugins: [
-		new webpack.DefinePlugin(GLOBALS),
 		new HtmlWebpackPlugin({ template: join(paths.appSrc, 'index.html') }),
 		new webpack.HotModuleReplacementPlugin(),
-		new webpack.NamedModulesPlugin(),
 	],
 }
