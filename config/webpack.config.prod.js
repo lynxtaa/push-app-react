@@ -10,6 +10,7 @@ const paths = require('./paths')
 process.env.NODE_ENV = 'production'
 
 module.exports = {
+	mode: 'production',
 	bail: true,
 	devtool: 'source-map',
 	entry: { app: paths.appSrc },

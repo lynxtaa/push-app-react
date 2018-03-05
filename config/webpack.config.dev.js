@@ -1,6 +1,10 @@
 const webpack = require('webpack')
 const { join } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const compression = require('compression')
+const koaConnect = require('koa-connect')
+const historyApiFallback = require('connect-history-api-fallback')
+const proxy = require('http-proxy-middleware')
 
 const paths = require('./paths')
 
@@ -9,12 +13,12 @@ process.env.NODE_ENV = 'development'
 module.exports = {
 	mode: 'development',
 	devtool: 'cheap-module-eval-source-map',
-	entry: { app: paths.appSrc },
+	entry: [paths.appSrc],
 	output: {
 		path: paths.appDist,
 		filename: 'js/bundle.js',
 		chunkFilename: 'js/[name].chunk.js',
-		publicPath: 'http://localhost:8080/',
+		publicPath: '/',
 		devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
 	},
 	resolve: {
@@ -23,39 +27,6 @@ module.exports = {
 			'@containers': join(paths.appSrc, 'containers'),
 		},
 		extensions: ['.js', '.json', '.jsx'],
-	},
-	devServer: {
-		compress: true,
-		hotOnly: true,
-		historyApiFallback: true,
-		proxy: { '/api': 'http://localhost:3000' },
-
-		stats: {
-			assets: false,
-			cached: false,
-			cachedAssets: false,
-			children: false,
-			chunks: false,
-			chunkModules: false,
-			chunkOrigins: false,
-			colors: true,
-			depth: false,
-			entrypoints: false,
-			errors: true,
-			errorDetails: true,
-			hash: false,
-			modules: false,
-			moduleTrace: false,
-			performance: false,
-			providedExports: false,
-			publicPath: false,
-			reasons: false,
-			source: false,
-			timings: true,
-			usedExports: false,
-			version: false,
-			warnings: true,
-		},
 	},
 	module: {
 		strictExportPresence: true,
@@ -96,7 +67,44 @@ module.exports = {
 	},
 
 	plugins: [
+		new webpack.ProgressPlugin(),
 		new HtmlWebpackPlugin({ template: join(paths.appSrc, 'index.html') }),
-		new webpack.HotModuleReplacementPlugin(),
+		new webpack.EnvironmentPlugin(['NODE_ENV']),
 	],
+}
+
+module.exports.serve = {
+	add(app) {
+		app.use(koaConnect(compression()))
+		app.use(koaConnect(proxy('/api', { target: 'http://localhost:3000' })))
+		app.use(koaConnect(historyApiFallback()))
+	},
+	dev: {
+		stats: {
+			assets: false,
+			cached: false,
+			cachedAssets: false,
+			children: false,
+			chunks: false,
+			chunkModules: false,
+			chunkOrigins: false,
+			colors: true,
+			depth: false,
+			entrypoints: false,
+			errors: true,
+			errorDetails: true,
+			hash: false,
+			modules: false,
+			moduleTrace: false,
+			performance: false,
+			providedExports: false,
+			publicPath: false,
+			reasons: false,
+			source: false,
+			timings: true,
+			usedExports: false,
+			version: false,
+			warnings: true,
+		},
+	},
 }
