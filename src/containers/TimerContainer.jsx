@@ -12,32 +12,32 @@ class Timer extends React.Component {
 		counter: this.props.times[0].seconds,
 	}
 
-	handleClick = value => {
-		this.stopTimer()
-		this.setState({ counter: value, countdown: value })
+	componentDidUpdate(prevProps, prevState) {
+		if (prevState.countdown === 0 || prevState.countdown < this.state.countdown) {
+			clearInterval(this.interval)
+			this.interval = null
+		}
 	}
+
+	handleClick = value => this.setState({ counter: value, countdown: value })
 
 	resetCountdown = () => this.setState(prev => ({ countdown: prev.counter }))
 
-	stopTimer = () => {
-		clearInterval(this.interval)
-		this.interval = false
+	runTimer() {
+		const start = Date.now()
+
+		this.interval = setInterval(
+			() =>
+				this.setState(prev => {
+					const delta = Date.now() - start
+					const countdown = prev.counter - Math.floor(delta / 1000)
+					return { countdown: countdown > 0 ? countdown : 0 }
+				}),
+			1000,
+		)
 	}
 
-	toogleTimer = () => {
-		if (this.interval) {
-			this.stopTimer()
-			this.resetCountdown()
-		} else {
-			this.interval = setInterval(
-				() =>
-					this.state.countdown > 0
-						? this.setState(prev => ({ countdown: prev.countdown - 1 }))
-						: this.stopTimer(),
-				1000,
-			)
-		}
-	}
+	toogleTimer = () => (this.interval ? this.resetCountdown() : this.runTimer())
 
 	render() {
 		const { counter, countdown } = this.state
