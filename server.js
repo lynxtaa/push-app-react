@@ -2,7 +2,7 @@ const { join } = require('path')
 const express = require('express')
 const compression = require('compression')
 const morgan = require('morgan')
-const rfs = require('rotating-file-stream')
+const { createWriteStream } = require('fs')
 const wait = require('./middleware/wait')
 
 const app = express()
@@ -15,8 +15,8 @@ const distFolder = join(__dirname, 'dist')
 app.use(express.static(distFolder))
 
 if (app.get('env') == 'production') {
-	const accessLogStream = rfs('access.log', { interval: '1d', path: __dirname })
-	app.use(morgan('short', { stream: accessLogStream }))
+	const logPath = join(__dirname, 'access.log')
+	app.use(morgan('short', { stream: createWriteStream(logPath, { flags: 'a' }) }))
 } else {
 	app.use(morgan('dev'))
 }
