@@ -1,7 +1,7 @@
 const webpack = require('webpack')
 const { join, resolve } = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const OfflinePlugin = require('offline-plugin')
 
@@ -48,10 +48,7 @@ module.exports = {
 
 			{
 				test: /\.css$/,
-				use: ExtractTextPlugin.extract({
-					fallback: { loader: 'style-loader', options: { hmr: false } },
-					use: { loader: 'css-loader', options: { minimize: true } },
-				}),
+				use: [MiniCssExtractPlugin.loader, { loader: 'css-loader', options: { minimize: true } }],
 			},
 
 			{
@@ -90,9 +87,9 @@ module.exports = {
 			},
 		}),
 
-		new ExtractTextPlugin({
-			allChunks: true,
-			filename: 'styles/[name].[contenthash:8].css',
+		new MiniCssExtractPlugin({
+			filename: 'styles/[name].[chunkhash:8].css',
+			chunkFilename: 'styles/[name].[chunkhash:8].chunk.css',
 		}),
 
 		new OfflinePlugin({
