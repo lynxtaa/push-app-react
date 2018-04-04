@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const { join, resolve } = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -89,8 +88,8 @@ module.exports = {
 		}),
 
 		new MiniCssExtractPlugin({
-			filename: 'styles/[name].[chunkhash:8].css',
-			chunkFilename: 'styles/[name].[chunkhash:8].chunk.css',
+			filename: 'styles/[name].[contenthash:8].css',
+			chunkFilename: 'styles/[name].[contenthash:8].chunk.css',
 		}),
 
 		new OfflinePlugin({

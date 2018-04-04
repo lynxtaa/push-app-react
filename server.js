@@ -3,7 +3,6 @@ const express = require('express')
 const compression = require('compression')
 const morgan = require('morgan')
 const { createWriteStream } = require('fs')
-const wait = require('./middleware/wait')
 
 const app = express()
 
@@ -19,10 +18,6 @@ if (app.get('env') == 'production') {
 	app.use(morgan('short', { stream: createWriteStream(logPath, { flags: 'a' }) }))
 } else {
 	app.use(morgan('dev'))
-}
-
-if (app.get('env') == 'development') {
-	app.use(wait(1000)) // emulate slow network
 }
 
 require('./controllers')(app)
