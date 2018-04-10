@@ -41,7 +41,6 @@
     "babel-loader": "^8.0.0-beta.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "clean-webpack-plugin": "^0.1.19",
-    "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",

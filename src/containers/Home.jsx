@@ -2,13 +2,11 @@ import React from 'react'
 import { Redirect } from 'react-router'
 import { get } from 'idb-keyval'
 
-class Page404Container extends React.Component {
+class Home extends React.Component {
 	state = { day: null, week: null }
 
 	componentDidMount() {
-		get('route').then(data => {
-			this.setState(data || { week: 1, day: 1 })
-		})
+		get('route').then(data => this.setState(data || { week: 1, day: 1 }))
 	}
 
 	render() {
@@ -18,4 +16,4 @@ class Page404Container extends React.Component {
 	}
 }
 
-export default Page404Container
+export default Home

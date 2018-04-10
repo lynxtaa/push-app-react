@@ -6,12 +6,12 @@ import HeaderContainer from '@containers/HeaderContainer'
 import ErrorBoundary from '@containers/ErrorBoundary'
 
 const App = ({ children }) => (
-	<div className="container p-3">
+	<main className="container p-3">
 		<ErrorBoundary>
 			<HeaderContainer />
 			{children}
 		</ErrorBoundary>
-	</div>
+	</main>
 )
 
 App.propTypes = {

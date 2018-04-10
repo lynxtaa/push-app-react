@@ -3,7 +3,6 @@ const { join } = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const compression = require('compression')
 const koaConnect = require('koa-connect')
-const historyApiFallback = require('connect-history-api-fallback')
 const proxy = require('http-proxy-middleware')
 
 const paths = require('./paths')
@@ -77,7 +76,6 @@ module.exports.serve = {
 	add(app) {
 		app.use(koaConnect(compression()))
 		app.use(koaConnect(proxy('/api', { target: 'http://localhost:3000' })))
-		app.use(koaConnect(historyApiFallback()))
 	},
 	dev: {
 		stats: {

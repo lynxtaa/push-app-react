@@ -1,19 +1,20 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
 import { hot } from 'react-hot-loader'
 import App from '@components/App'
+import Home from '@containers/Home'
 import Sets from '@containers/Sets'
-import Page404 from '@containers/Page404'
 
 const AppRouter = () => (
-	<Router>
+	<HashRouter>
 		<App>
 			<Switch>
+				<Route path="/" exact component={Home} />
 				<Route path="/:week(\d)/:day(\d)?" component={Sets} />
-				<Route component={Page404} />
+				<Redirect to="/" />
 			</Switch>
 		</App>
-	</Router>
+	</HashRouter>
 )
 
 export default hot(module)(AppRouter)
