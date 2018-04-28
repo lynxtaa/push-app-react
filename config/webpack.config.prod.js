@@ -93,8 +93,6 @@ module.exports = {
 			chunkFilename: 'styles/[name].[contenthash:8].chunk.css',
 		}),
 
-		new OfflinePlugin({
-			ServiceWorker: { minify: false },
-		}),
+		new OfflinePlugin(),
 	],
 }
