@@ -1,0 +1,47 @@
+$primary: #443f4a;
+$secondary: #736c7a;
+$info: #477183;
+$body-bg: #f8f8fb;
+$warning: #a19a8e;
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+	font-size: 18px;
+}
+
+.container {
+	max-width: 680px;
+}
+
+.btn {
+	font-size: 1em;
+}
+
+.btn-outline-secondary:hover {
+	color: white;
+}
+
+.btn-primary:not([disabled]):not(.disabled).active {
+	box-shadow: none;
+}
+
+label {
+	font-size: 1em;
+	margin-bottom: 0;
+}
+
+.pushlist li {
+	height: 40px;
+	&.hide {
+		visibility: hidden;
+		height: 0;
+		margin: 0 !important;
+		opacity: 0;
+		transition: visibility 0s 0.3s, height 0.3s 0.3s, margin 0.3s 0.3s, opacity 0.3s;
+	}
+}
+
+details {
+	white-space: pre-wrap;
+}
