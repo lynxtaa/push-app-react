@@ -5,12 +5,14 @@ class TimerButton extends React.Component {
 	handleClick = () => this.props.onClick(this.props.value)
 
 	render() {
-		const { active, children } = this.props
-
 		return (
-			<label className={'btn btn-primary' + (active ? ' active' : '')} onClick={this.handleClick}>
-				{children}
-			</label>
+			<button
+				className={'btn btn-primary' + (this.props.active ? ' active' : '')}
+				onClick={this.handleClick}
+				type="button"
+			>
+				{this.props.children}
+			</button>
 		)
 	}
 }

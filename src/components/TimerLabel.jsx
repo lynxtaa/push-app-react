@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TimerLabel = ({ children, onClick }) => (
-	<label className="btn btn-outline-info" onClick={onClick}>
+	<button className="btn btn-outline-info" onClick={onClick} type="button">
 		{children}
-	</label>
+	</button>
 )
 
 TimerLabel.propTypes = {
