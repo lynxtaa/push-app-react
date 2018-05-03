@@ -6,6 +6,12 @@ $warning: #a19a8e;
 
 @import '~bootstrap/scss/bootstrap';
 
+@include media-breakpoint-down(md) {
+	.btn:focus {
+		box-shadow: none !important;
+	}
+}
+
 body {
 	font-size: 18px;
 }
@@ -18,21 +24,9 @@ body {
 	font-size: 1em;
 }
 
-.btn-outline-secondary:hover {
-	color: white;
-}
-
-.btn-primary:not([disabled]):not(.disabled).active {
-	box-shadow: none;
-}
-
-label {
-	font-size: 1em;
-	margin-bottom: 0;
-}
-
 .pushlist li {
 	height: 40px;
+
 	&.hide {
 		visibility: hidden;
 		height: 0;
