@@ -7,10 +7,10 @@ import PushListItem from '@components/PushListItem'
 class PushListContainer extends React.Component {
 	state = { hidden: [] }
 
-	componentWillReceiveProps({ sets }) {
-		if (sets !== this.props.sets) {
-			this.setState({ hidden: [] })
-		}
+	static getDerivedStateFromProps(nextProps, prevState) {
+		return nextProps.sets !== prevState.prevSets
+			? { hidden: [], prevSets: nextProps.sets }
+			: null
 	}
 
 	hideSet = id => this.setState(({ hidden }) => ({ hidden: [...hidden, id] }))
