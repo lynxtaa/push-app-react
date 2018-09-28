@@ -1,6 +1,9 @@
 {
 	"parser": "babel-eslint",
 	"plugins": ["react"],
+	"settings": {
+		"react": { "version": "16.5.2" }
+	},
 	"rules": {
 		"no-invalid-this": 0,
 
