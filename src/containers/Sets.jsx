@@ -1,58 +1,48 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router'
 import { set } from 'idb-keyval'
 
 import NavPills from '@components/NavPills'
 import PushListContainer from './PushListContainer'
+import useFetchedData from '../hooks/useFetchedData'
 
-class Sets extends React.Component {
-	state = { schedule: null }
+const Sets = ({ match }) => {
+	const [schedule, error] = useFetchedData('/api/schedule')
 
-	componentDidMount() {
-		fetch('/api/schedule')
-			.then(res => res.json())
-			.then(schedule => {
-				this.setState({ schedule })
-			})
+	useEffect(() => {
+		set('route', match.params)
+	}, [match.params])
+
+	const { day, week } = match.params
+
+	if (error) {
+		return <h2 className="text-danger">{error.message}</h2>
 	}
 
-	componentDidUpdate() {
-		set('route', this.props.match.params)
+	if (!schedule) {
+		return <h2>Loading...</h2>
 	}
 
-	get links() {
-		const { week } = this.props.match.params
-
-		return [1, 2, 3].map(day => ({
-			link: `/${week}/${day}`,
-			text: `Day ${day}`,
-		}))
+	if (!day) {
+		return <Redirect to={`/${week}/1`} />
 	}
 
-	render() {
-		const { day, week } = this.props.match.params
-		const { schedule } = this.state
+	const sets = schedule
+		.find(({ weekNum }) => weekNum == week)
+		.days[day - 1].map((set, i) => ({ id: `${week}-${day}-${i}`, set }))
 
-		if (!schedule) {
-			return <h2>Loading...</h2>
-		}
+	const links = [1, 2, 3].map(day => ({
+		link: `/${week}/${day}`,
+		text: `Day ${day}`,
+	}))
 
-		if (!day) {
-			return <Redirect to={`/${week}/1`} />
-		}
-
-		const sets = schedule
-			.find(({ weekNum }) => weekNum == week)
-			.days[day - 1].map((set, i) => ({ id: `${week}-${day}-${i}`, set }))
-
-		return (
-			<div>
-				<NavPills links={this.links} />
-				<PushListContainer sets={sets} />
-			</div>
-		)
-	}
+	return (
+		<div>
+			<NavPills links={links} />
+			<PushListContainer sets={sets} />
+		</div>
+	)
 }
 
 Sets.propTypes = {

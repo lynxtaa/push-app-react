@@ -1,36 +1,37 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import PushList from '@components/PushList'
 import PushListItem from '@components/PushListItem'
 
-class PushListContainer extends React.Component {
-	state = { hidden: [] }
+const PushListContainer = ({ sets }) => {
+	const [hidden, setHidden] = useState([])
+	const [prevSets, setPrevSets] = useState()
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-		return nextProps.sets !== prevState.prevSets
-			? { hidden: [], prevSets: nextProps.sets }
-			: null
+	const makeHandleClick = useCallback(
+		id => () => setHidden(hidden => [...hidden, id]),
+		[],
+	)
+
+	if (sets !== prevSets) {
+		setPrevSets(sets)
+		setHidden([])
 	}
 
-	hideSet = id => this.setState(({ hidden }) => ({ hidden: [...hidden, id] }))
-
-	render() {
-		return (
-			<PushList>
-				{this.props.sets.map(({ id, set }) => (
-					<PushListItem
-						key={id}
-						id={id}
-						className={this.state.hidden.includes(id) ? 'hide' : undefined}
-						onClick={this.hideSet}
-					>
-						{set}
-					</PushListItem>
-				))}
-			</PushList>
-		)
-	}
+	return (
+		<PushList>
+			{sets.map(({ id, set }) => (
+				<PushListItem
+					key={id}
+					id={id}
+					className={hidden.includes(id) ? 'hide' : undefined}
+					onClick={makeHandleClick(id)}
+				>
+					{set}
+				</PushListItem>
+			))}
+		</PushList>
+	)
 }
 
 PushListContainer.propTypes = {

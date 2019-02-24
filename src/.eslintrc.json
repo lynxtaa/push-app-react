@@ -1,6 +1,6 @@
 {
 	"parser": "babel-eslint",
-	"plugins": ["react"],
+	"plugins": ["react", "react-hooks"],
 	"settings": {
 		"react": { "version": "16.5.2" }
 	},
@@ -58,6 +58,9 @@
 		"react/jsx-pascal-case": 1,
 		"react/jsx-sort-default-props": 1,
 		"react/jsx-uses-react": 2,
-		"react/jsx-uses-vars": 1
+		"react/jsx-uses-vars": 1,
+
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn"
 	}
 }

@@ -1,71 +1,75 @@
-import React from 'react'
+import React, { useCallback, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import TimerButton from '@components/TimerButton'
 import Alert from '@components/Alert'
 import ButtonGroup from '@components/ButtonGroup'
 import TimerLabel from '@components/TimerLabel'
+import useInterval from '../hooks/useInterval'
 
-class Timer extends React.Component {
-	state = {
-		countdown: this.props.times[0].seconds,
-		counter: this.props.times[0].seconds,
-	}
+const Timer = ({ times }) => {
+	const [countdown, setCountdown] = useState(times[0].seconds)
+	const [counter, setCounter] = useState(times[0].seconds)
+	const [timerActive, setTimerActive] = useState(false)
 
-	componentDidUpdate(prevProps, prevState) {
-		if (prevState.countdown === 0 || prevState.countdown < this.state.countdown) {
-			clearInterval(this.interval)
-			this.interval = null
-		}
-	}
+	const start = useRef(0)
 
-	handleClick = value => this.setState({ counter: value, countdown: value })
+	useInterval(
+		() => {
+			const delta = Date.now() - start.current
+			const countdown = counter - Math.floor(delta / 1000)
+			if (countdown > 0) {
+				setCountdown(countdown)
+			} else {
+				setCountdown(0)
+				setTimerActive(false)
+			}
+		},
+		timerActive ? 1000 : null,
+	)
 
-	resetCountdown = () => this.setState(prev => ({ countdown: prev.counter }))
+	const handleClick = useCallback(event => {
+		const value = Number(event.target.value)
+		setCounter(value)
+		setCountdown(value)
+		setTimerActive(false)
+	}, [])
 
-	runTimer() {
-		const start = Date.now()
+	const resetCountdown = useCallback(() => {
+		setCountdown(counter)
+		setTimerActive(false)
+	}, [counter])
 
-		this.interval = setInterval(
-			() =>
-				this.setState(prev => {
-					const delta = Date.now() - start
-					const countdown = prev.counter - Math.floor(delta / 1000)
-					return { countdown: countdown > 0 ? countdown : 0 }
-				}),
-			1000,
-		)
-	}
+	const runTimer = useCallback(() => {
+		start.current = Date.now()
+		setTimerActive(true)
+	}, [])
 
-	toogleTimer = () => (this.interval ? this.resetCountdown() : this.runTimer())
+	return (
+		<div className="mb-3">
+			{countdown === 0 && (
+				<Alert onClick={resetCountdown}>
+					<b>Do next!</b>
+				</Alert>
+			)}
 
-	render() {
-		const { counter, countdown } = this.state
-
-		return (
-			<div className="mb-3">
-				{countdown === 0 && (
-					<Alert onClick={this.resetCountdown}>
-						<b>Do next!</b>
-					</Alert>
-				)}
-
-				<ButtonGroup>
-					{this.props.times.map(({ seconds, label }) => (
-						<TimerButton
-							active={counter == seconds}
-							key={seconds}
-							onClick={this.handleClick}
-							value={seconds}
-						>
-							{label}
-						</TimerButton>
-					))}
-					<TimerLabel onClick={this.toogleTimer}>{countdown}</TimerLabel>
-				</ButtonGroup>
-			</div>
-		)
-	}
+			<ButtonGroup>
+				{times.map(({ seconds, label }) => (
+					<TimerButton
+						active={counter == seconds}
+						key={seconds}
+						onClick={handleClick}
+						value={seconds}
+					>
+						{label}
+					</TimerButton>
+				))}
+				<TimerLabel onClick={timerActive ? resetCountdown : runTimer}>
+					{countdown}
+				</TimerLabel>
+			</ButtonGroup>
+		</div>
+	)
 }
 
 Timer.propTypes = {

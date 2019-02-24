@@ -1,6 +1,6 @@
 import React from 'react'
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
-import { hot } from 'react-hot-loader'
+import { hot } from 'react-hot-loader/root'
 import App from '@components/App'
 import Home from '@containers/Home'
 import Sets from '@containers/Sets'
@@ -17,4 +17,4 @@ const AppRouter = () => (
 	</HashRouter>
 )
 
-export default hot(module)(AppRouter)
+export default hot(AppRouter)

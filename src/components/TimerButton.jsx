@@ -1,21 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-class TimerButton extends React.Component {
-	handleClick = () => this.props.onClick(this.props.value)
-
-	render() {
-		return (
-			<button
-				className={'btn btn-primary' + (this.props.active ? ' active' : '')}
-				onClick={this.handleClick}
-				type="button"
-			>
-				{this.props.children}
-			</button>
-		)
-	}
-}
+const TimerButton = ({ onClick, value, active, children }) => (
+	<button
+		className={'btn btn-primary' + (active ? ' active' : '')}
+		onClick={onClick}
+		type="button"
+		value={value}
+	>
+		{children}
+	</button>
+)
 
 TimerButton.propTypes = {
 	active: PropTypes.bool,

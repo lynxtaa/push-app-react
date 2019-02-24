@@ -2,7 +2,6 @@ const { join } = require('path')
 const express = require('express')
 const compression = require('compression')
 const morgan = require('morgan')
-const { createWriteStream } = require('fs')
 
 const app = express()
 
@@ -13,12 +12,7 @@ app.use(compression())
 const distFolder = join(__dirname, 'dist')
 app.use(express.static(distFolder))
 
-if (app.get('env') == 'production') {
-	const logPath = join(__dirname, 'access.log')
-	app.use(morgan('short', { stream: createWriteStream(logPath, { flags: 'a' }) }))
-} else {
-	app.use(morgan('dev'))
-}
+app.use(morgan(process.env.NODE_ENV === 'production' ? 'tiny' : 'dev'))
 
 require('./controllers')(app)
 
