@@ -25,13 +25,12 @@ module.exports = {
 			'@components': join(paths.appSrc, 'components'),
 			'@containers': join(paths.appSrc, 'containers'),
 		},
-		extensions: ['.js', '.json', '.jsx'],
 	},
 	module: {
 		strictExportPresence: true,
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.js$/,
 				include: paths.appSrc,
 				enforce: 'pre',
 				loader: 'eslint-loader',
@@ -39,7 +38,7 @@ module.exports = {
 			},
 
 			{
-				test: /\.jsx?$/,
+				test: /\.js$/,
 				include: paths.appSrc,
 				loader: 'babel-loader',
 				options: { cacheDirectory: true },

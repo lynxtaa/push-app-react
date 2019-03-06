@@ -24,7 +24,6 @@ module.exports = {
 			'@components': join(paths.appSrc, 'components'),
 			'@containers': join(paths.appSrc, 'containers'),
 		},
-		extensions: ['.js', '.json', '.jsx'],
 	},
 	optimization: {
 		splitChunks: { chunks: 'all' },
@@ -34,14 +33,14 @@ module.exports = {
 		strictExportPresence: true,
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.js$/,
 				include: paths.appSrc,
 				enforce: 'pre',
 				loader: 'eslint-loader',
 			},
 
 			{
-				test: /\.jsx?$/,
+				test: /\.js$/,
 				include: paths.appSrc,
 				loader: 'babel-loader',
 				options: { compact: true },
