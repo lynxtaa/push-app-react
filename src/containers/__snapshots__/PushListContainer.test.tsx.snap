@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders list 1`] = `
+<ul
+  class="pushlist list-unstyled"
+>
+  <li
+    class="mb-3 "
+  >
+    <button
+      class="btn btn-outline-secondary w-100"
+      type="button"
+    >
+      1
+    </button>
+  </li>
+  <li
+    class="mb-3 "
+  >
+    <button
+      class="btn btn-outline-secondary w-100"
+      type="button"
+    >
+      2
+    </button>
+  </li>
+  <li
+    class="mb-3 "
+  >
+    <button
+      class="btn btn-outline-secondary w-100"
+      type="button"
+    >
+      3
+    </button>
+  </li>
+</ul>
+`;

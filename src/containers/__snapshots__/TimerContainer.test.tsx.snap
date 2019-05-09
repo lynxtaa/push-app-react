@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders timer 1`] = `
+<div
+  class="mb-3"
+>
+  <div
+    class="btn-group"
+  >
+    <button
+      class="btn btn-primary active"
+      type="button"
+      value="60"
+    >
+      1 min
+    </button>
+    <button
+      class="btn btn-primary"
+      type="button"
+      value="120"
+    >
+      2 min
+    </button>
+    <button
+      class="btn btn-outline-info"
+      type="button"
+    >
+      60
+    </button>
+  </div>
+</div>
+`;
