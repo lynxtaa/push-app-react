@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, waitForElement } from 'react-testing-library'
+import { render, waitForElement } from '@testing-library/react'
 import Sets from './Sets'
 import { MemoryRouter, Route } from 'react-router-dom'
 import { set } from 'idb-keyval'

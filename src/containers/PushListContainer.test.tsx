@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import { render, fireEvent } from '@testing-library/react'
 import PushListContainer from './PushListContainer'
 
 const sets = [{ id: '1', set: 1 }, { id: '2', set: 2 }, { id: '3', set: 3 }]

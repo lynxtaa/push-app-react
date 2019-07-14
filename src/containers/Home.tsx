@@ -12,7 +12,7 @@ const Home = () => {
 	const [week, setWeek] = useState<number>()
 
 	useEffect(() => {
-		get('route').then((data: Data | undefined) => {
+		get<Data>('route').then(data => {
 			setDay((data && data.day) || 1)
 			setWeek((data && data.week) || 1)
 		})
