@@ -4,8 +4,6 @@ import Home from './Home'
 import { MemoryRouter, Route } from 'react-router-dom'
 import { get } from 'idb-keyval'
 
-jest.mock('idb-keyval', () => ({ set: jest.fn(), get: jest.fn() }))
-
 const getMock = get as jest.Mock
 
 it('if WEEK and DAY NOT found in idb, redirects to /1/1', async () => {

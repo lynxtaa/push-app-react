@@ -1,8 +1,13 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import AppRouter from './AppRouter'
+import { render, waitForElement } from '@testing-library/react'
+import { get } from 'idb-keyval'
 
-it('renders without crashing', () => {
-	const div = document.createElement('div')
-	ReactDOM.render(<AppRouter />, div)
+const getMock = get as jest.Mock
+
+it('renders without crashing', async () => {
+	getMock.mockResolvedValue(null)
+
+	const { getByText } = render(<AppRouter />)
+	await waitForElement(() => getByText('Week 1'))
 })
