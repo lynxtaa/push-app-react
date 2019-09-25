@@ -7,7 +7,7 @@ interface Data {
 	week?: number
 }
 
-const Home = () => {
+function Home() {
 	const [day, setDay] = useState<number>()
 	const [week, setWeek] = useState<number>()
 

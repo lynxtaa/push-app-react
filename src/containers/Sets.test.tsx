@@ -22,7 +22,9 @@ it('renders sets page', async () => {
 
 	const { container, getByText } = render(
 		<MemoryRouter initialEntries={['/1/1']} initialIndex={0}>
-			<Route path="/:week(\d)/:day(\d)?" component={Sets} />
+			<Route path="/:week(\d)/:day(\d)?">
+				<Sets />
+			</Route>
 		</MemoryRouter>,
 	)
 
@@ -37,7 +39,9 @@ it('if fetch resulted in error, shows error', async () => {
 
 	const { container, getByText } = render(
 		<MemoryRouter initialEntries={['/1/1']} initialIndex={0}>
-			<Route path="/:week(\d)/:day(\d)?" component={Sets} />
+			<Route path="/:week(\d)/:day(\d)?">
+				<Sets />
+			</Route>
 		</MemoryRouter>,
 	)
 
@@ -59,7 +63,9 @@ it('if no day in match.params, redirects to /<WEEK>/1', async () => {
 
 	const { container, getByText } = render(
 		<MemoryRouter initialEntries={['/3']} initialIndex={0}>
-			<Route path="/:week(\d)/:day(\d)?" component={Sets} />
+			<Route path="/:week(\d)/:day(\d)?">
+				<Sets />
+			</Route>
 		</MemoryRouter>,
 	)
 

@@ -1,28 +1,25 @@
 import React, { useEffect } from 'react'
-import { Redirect, match } from 'react-router-dom'
+import { Redirect, useParams } from 'react-router-dom'
 import { set } from 'idb-keyval'
 
 import NavPills from 'components/NavPills'
 import PushListContainer from './PushListContainer'
 import useFetchedData from '../hooks/useFetchedData'
 
-interface Props {
-	match: match<{ day?: string; week: string }>
-}
-
 type ScheduleItem = {
 	weekNum: number
 	days: number[][]
 }
 
-const Sets = ({ match }: Props) => {
+function Sets() {
 	const [schedule, error] = useFetchedData<ScheduleItem[]>('/schedule.json')
+	const matchParams = useParams<{ day?: string; week: string }>()
+
+	const { day, week } = matchParams
 
 	useEffect(() => {
-		set('route', match.params)
-	}, [match.params])
-
-	const { day, week } = match.params
+		set('route', { day, week })
+	}, [day, week])
 
 	if (error) {
 		return <h2 className="text-danger">{error.message}</h2>

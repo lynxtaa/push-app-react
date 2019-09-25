@@ -9,8 +9,12 @@ const AppRouter = () => (
 		<HashRouter>
 			<App>
 				<Switch>
-					<Route path="/" exact component={Home} />
-					<Route path="/:week(\d)/:day(\d)?" component={Sets} />
+					<Route path="/" exact>
+						<Home />
+					</Route>
+					<Route path="/:week(\d)/:day(\d)?">
+						<Sets />
+					</Route>
 					<Redirect to="/" />
 				</Switch>
 			</App>
