@@ -2,7 +2,10 @@ import React from 'react'
 import { render, fireEvent, act, getByText } from '@testing-library/react'
 import TimerContainer from './TimerContainer'
 
-const times = [{ label: '1 min', seconds: 60 }, { label: '2 min', seconds: 120 }]
+const times = [
+	{ label: '1 min', seconds: 60 },
+	{ label: '2 min', seconds: 120 },
+]
 
 declare const Date: any
 
