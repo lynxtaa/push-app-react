@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import PushList from 'components/PushList'
 import PushListItem from 'components/PushListItem'
@@ -14,25 +14,18 @@ interface Props {
 
 const PushListContainer = ({ sets }: Props) => {
 	const [hidden, setHidden] = useState<string[]>([])
-	const [prevSets, setPrevSets] = useState<Set[]>()
 
-	const makeHandleClick = useCallback(
-		id => () => setHidden(hidden => [...hidden, id]),
-		[],
-	)
-
-	if (sets !== prevSets) {
-		setPrevSets(sets)
+	useEffect(() => {
 		setHidden([])
-	}
+	}, [sets])
 
 	return (
 		<PushList>
-			{sets.map(({ id, set }) => (
+			{sets.map(({ set, id }) => (
 				<PushListItem
 					key={id}
-					className={hidden.includes(id) ? 'hide' : undefined}
-					onClick={makeHandleClick(id)}
+					onClick={() => setHidden([...hidden, id])}
+					isHidden={hidden.includes(id)}
 				>
 					{set}
 				</PushListItem>

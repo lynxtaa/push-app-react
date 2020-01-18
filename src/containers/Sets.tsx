@@ -12,7 +12,9 @@ type ScheduleItem = {
 }
 
 function Sets() {
-	const [schedule, error] = useFetchedData<ScheduleItem[]>('/schedule.json')
+	const [schedule, error] = useFetchedData<ScheduleItem[]>(
+		`${process.env.PUBLIC_URL}/schedule.json`,
+	)
 	const matchParams = useParams<{ day?: string; week: string }>()
 
 	const { day, week } = matchParams
