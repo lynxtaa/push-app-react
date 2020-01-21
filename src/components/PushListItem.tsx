@@ -8,7 +8,7 @@ interface Props {
 }
 
 const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
-	const style = useSpring({
+	const spring = useSpring({
 		from: { opacity: 0, marginBottom: '0px', height: '0px' },
 		to: { opacity: 1, marginBottom: '16px', height: '40px' },
 		config: config.gentle,
@@ -18,9 +18,8 @@ const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
 	return (
 		<animated.li
 			style={{
-				...style,
-				// @ts-ignore
-				visibility: style.opacity!.interpolate(o => (o === 0 ? 'hidden' : 'visible')),
+				...spring,
+				visibility: spring.opacity.to((o: number) => (o === 0 ? 'hidden' : 'visible')),
 			}}
 		>
 			<button type="button" className="btn btn-outline-secondary w-100" onClick={onClick}>

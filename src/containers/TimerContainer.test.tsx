@@ -1,5 +1,8 @@
 import React from 'react'
 import { render, fireEvent, act, getByText } from '@testing-library/react'
+import createMockRaf, { MockRaf } from '@react-spring/mock-raf'
+import { Globals, FrameLoop } from 'react-spring'
+
 import TimerContainer from './TimerContainer'
 
 const times = [
@@ -13,8 +16,19 @@ const now = Date.now()
 
 Date.now = jest.fn()
 
+let mockRaf: MockRaf
+
 beforeEach(() => {
 	Date.now.mockReturnValue(now)
+
+	mockRaf = createMockRaf()
+
+	Globals.assign({
+		now: mockRaf.now,
+		requestAnimationFrame: mockRaf.raf,
+		cancelAnimationFrame: mockRaf.cancel,
+		frameLoop: new FrameLoop(),
+	})
 })
 
 it('renders timer', () => {
@@ -32,6 +46,8 @@ it('runs timer after click', async () => {
 		Date.now.mockReturnValue(Date.now() + 3000)
 		jest.advanceTimersByTime(3000)
 	})
+	mockRaf.flush()
+
 	expect(timerButton.textContent).toBe('57')
 })
 
@@ -45,6 +61,7 @@ it('shows alert after countdown', async () => {
 		Date.now.mockReturnValue(Date.now() + 60000)
 		jest.advanceTimersByTime(60000)
 	})
+	mockRaf.flush()
 	expect(getByText(document.body, 'Do next!')).toBeInTheDocument()
 	expect(timerButton.textContent).toBe('0')
 })
@@ -80,10 +97,10 @@ it('stops timer when counter is changed', async () => {
 	})
 	const anotherCounter = getByText('2 min')
 	fireEvent.click(anotherCounter)
-	expect(timerButton.textContent).toBe('120')
 	act(() => {
 		Date.now.mockReturnValue(Date.now() + 3000)
 		jest.advanceTimersByTime(3000)
+		mockRaf.flush()
 	})
 	expect(timerButton.textContent).toBe('120')
 	expect(anotherCounter.className).toContain('active')
