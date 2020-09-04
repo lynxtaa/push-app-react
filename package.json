@@ -5,7 +5,7 @@
   "description": "Pushups Scheduler",
   "author": "Alex Kondratyuk <lynxtaa@gmail.com>",
   "repository": "https://github.com/lynxtaa/push-app-react.git",
-  "homepage": "http://lynxtaa.github.io/push-app-react",
+  "homepage": "https://push-app-react.vercel.app",
   "license": "ISC",
   "husky": {
     "hooks": {
@@ -29,7 +29,6 @@
     "@types/react-dom": "^16.9.5",
     "@types/react-router-dom": "^5.1.3",
     "emotion-theming": "^10.0.27",
-    "gh-pages": "^3.0.0",
     "husky": "^4.2.1",
     "idb-keyval": "^3.2.0",
     "jest-environment-jsdom-fifteen": "^1.0.2",
@@ -47,9 +46,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env jest-environment-jsdom-fifteen",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext=ts,tsx src",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint": "eslint --ext=ts,tsx src"
   },
   "eslintConfig": {
     "extends": "react-app"
