@@ -6,15 +6,14 @@ type Props = {
 	children: number
 } & Omit<ButtonProps, 'children'>
 
-// as any, потому что типы react-spring сильно тормозят
-const AnimatedButton: React.FC<ButtonProps> = (animated as any)(Button)
+const AnimatedButton = animated(Button)
 
 export default function TimerLabel({ children, onClick, ...rest }: Props) {
 	const { number } = useSpring({ number: children })
 
 	return (
 		<AnimatedButton onClick={onClick} {...rest} variant="outline" variantColor="brand">
-			{number.to((value: number) => Math.round(value))}
+			{number.interpolate((value: number) => Math.round(value))}
 		</AnimatedButton>
 	)
 }

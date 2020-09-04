@@ -10,7 +10,7 @@ const links = [1, 2, 3, 4, 5, 6].map((week) => ({
 	text: `Week ${week}`,
 }))
 const times = [
-	{ label: '1 min', seconds: 6 },
+	{ label: '1 min', seconds: 60 },
 	{ label: '2 min', seconds: 120 },
 ]
 

@@ -2,7 +2,6 @@ import React from 'react'
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import createMockRaf, { MockRaf } from '@react-spring/mock-raf'
-import { Globals, FrameLoop } from 'react-spring'
 
 import PushListContainer from './PushListContainer'
 import renderWithProviders from 'testUtils/renderWithProviders'
@@ -11,13 +10,7 @@ let mockRaf: MockRaf
 
 beforeEach(() => {
 	mockRaf = createMockRaf()
-
-	Globals.assign({
-		now: mockRaf.now,
-		requestAnimationFrame: mockRaf.raf,
-		cancelAnimationFrame: mockRaf.cancel,
-		frameLoop: new FrameLoop(),
-	})
+	window.requestAnimationFrame = mockRaf.raf
 })
 
 const sets = [

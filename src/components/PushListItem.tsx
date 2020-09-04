@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSpring, animated, config } from 'react-spring'
-import { ListItem, Button } from '@chakra-ui/core'
+import { Button, ListItem } from '@chakra-ui/core'
 
 interface Props {
 	children: React.ReactNode
@@ -8,9 +8,9 @@ interface Props {
 	onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void
 }
 
-const AnimatedListItem = animated(ListItem) as any
+const AnimatedListItem = animated(ListItem)
 
-const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
+export default function PushListItem({ onClick, children, isHidden }: Props) {
 	const spring = useSpring({
 		from: { opacity: 0, marginBottom: '0px', height: '0px' },
 		to: { opacity: 1, marginBottom: '16px', height: '40px' },
@@ -22,7 +22,9 @@ const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
 		<AnimatedListItem
 			style={{
 				...spring,
-				visibility: spring.opacity.to((o: number) => (o === 0 ? 'hidden' : 'visible')),
+				visibility: (spring as any).opacity.interpolate((o: number) =>
+					o === 0 ? 'hidden' : 'visible',
+				),
 			}}
 		>
 			<Button variant="outline" w="100%" onClick={onClick} variantColor="brand">
@@ -31,5 +33,3 @@ const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
 		</AnimatedListItem>
 	)
 }
-
-export default PushListItem
