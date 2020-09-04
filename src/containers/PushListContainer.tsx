@@ -1,6 +1,6 @@
+import { List } from '@chakra-ui/core'
 import React, { useState, useEffect } from 'react'
 
-import PushList from 'components/PushList'
 import PushListItem from 'components/PushListItem'
 
 interface Set {
@@ -12,7 +12,7 @@ interface Props {
 	sets: Set[]
 }
 
-const PushListContainer = ({ sets }: Props) => {
+export default function PushListContainer({ sets }: Props) {
 	const [hidden, setHidden] = useState<string[]>([])
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ const PushListContainer = ({ sets }: Props) => {
 	}, [sets])
 
 	return (
-		<PushList>
+		<List>
 			{sets.map(({ set, id }) => (
 				<PushListItem
 					key={id}
@@ -30,8 +30,6 @@ const PushListContainer = ({ sets }: Props) => {
 					{set}
 				</PushListItem>
 			))}
-		</PushList>
+		</List>
 	)
 }
-
-export default PushListContainer

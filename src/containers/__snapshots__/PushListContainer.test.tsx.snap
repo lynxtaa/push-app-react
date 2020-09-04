@@ -2,33 +2,36 @@
 
 exports[`renders list 1`] = `
 <ul
-  class="pushlist list-unstyled"
+  class="css-19ndbdu"
 >
   <li
+    class="css-992tcj"
     style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
   >
     <button
-      class="btn btn-outline-secondary w-100"
+      class="css-159qfxn"
       type="button"
     >
       1
     </button>
   </li>
   <li
+    class="css-992tcj"
     style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
   >
     <button
-      class="btn btn-outline-secondary w-100"
+      class="css-159qfxn"
       type="button"
     >
       2
     </button>
   </li>
   <li
+    class="css-992tcj"
     style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
   >
     <button
-      class="btn btn-outline-secondary w-100"
+      class="css-159qfxn"
       type="button"
     >
       3

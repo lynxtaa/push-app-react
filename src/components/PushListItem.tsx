@@ -1,11 +1,14 @@
 import React from 'react'
 import { useSpring, animated, config } from 'react-spring'
+import { ListItem, Button } from '@chakra-ui/core'
 
 interface Props {
 	children: React.ReactNode
 	isHidden?: boolean
 	onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void
 }
+
+const AnimatedListItem = animated(ListItem) as any
 
 const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
 	const spring = useSpring({
@@ -16,16 +19,16 @@ const PushListItem: React.FC<Props> = ({ onClick, children, isHidden }) => {
 	})
 
 	return (
-		<animated.li
+		<AnimatedListItem
 			style={{
 				...spring,
 				visibility: spring.opacity.to((o: number) => (o === 0 ? 'hidden' : 'visible')),
 			}}
 		>
-			<button type="button" className="btn btn-outline-secondary w-100" onClick={onClick}>
+			<Button variant="outline" w="100%" onClick={onClick} variantColor="brand">
 				{children}
-			</button>
-		</animated.li>
+			</Button>
+		</AnimatedListItem>
 	)
 }
 

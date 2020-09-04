@@ -1,9 +1,11 @@
 import React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import createMockRaf, { MockRaf } from '@react-spring/mock-raf'
 import { Globals, FrameLoop } from 'react-spring'
 
 import PushListContainer from './PushListContainer'
+import renderWithProviders from 'testUtils/renderWithProviders'
 
 let mockRaf: MockRaf
 
@@ -25,14 +27,16 @@ const sets = [
 ]
 
 it('renders list', () => {
-	const { container } = render(<PushListContainer sets={sets} />)
+	const { container } = renderWithProviders(<PushListContainer sets={sets} />)
 	expect(container.firstChild).toMatchSnapshot()
 })
 
 it('hides item after click', async () => {
-	const { getByText } = render(<PushListContainer sets={sets} />)
-	const item = getByText('2')
-	fireEvent.click(item)
+	renderWithProviders(<PushListContainer sets={sets} />)
+
+	const item = screen.getByText('2')
+	userEvent.click(item)
 	mockRaf.flush()
+
 	expect(item).not.toBeVisible()
 })

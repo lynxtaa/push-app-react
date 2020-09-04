@@ -1,4 +1,5 @@
 import React from 'react'
+import { Box, Text } from '@chakra-ui/core'
 
 interface Props {
 	children: React.ReactNode
@@ -19,15 +20,15 @@ class ErrorBoundary extends React.Component<Props, State> {
 	render() {
 		if (this.state.errorInfo) {
 			return (
-				<div>
-					<h2 className="text-danger">Something went wrong</h2>
-					<small>
-						<details>
-							{this.state.error && this.state.error.toString()}
-							{this.state.errorInfo.componentStack}
-						</details>
-					</small>
-				</div>
+				<Box>
+					<Text fontSize="xl" color="red.500">
+						Something went wrong
+					</Text>
+					<Text as="details" whiteSpace="pre-wrap">
+						{this.state.error && this.state.error.toString()}
+						{this.state.errorInfo.componentStack}
+					</Text>
+				</Box>
 			)
 		}
 

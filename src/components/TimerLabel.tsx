@@ -1,19 +1,20 @@
 import React from 'react'
 import { animated, useSpring } from 'react-spring'
+import { Button, ButtonProps } from '@chakra-ui/core'
 
-interface Props {
+type Props = {
 	children: number
-	onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void
-}
+} & Omit<ButtonProps, 'children'>
 
-const TimerLabel = ({ children, onClick }: Props) => {
+// as any, потому что типы react-spring сильно тормозят
+const AnimatedButton: React.FC<ButtonProps> = (animated as any)(Button)
+
+export default function TimerLabel({ children, onClick, ...rest }: Props) {
 	const { number } = useSpring({ number: children })
 
 	return (
-		<animated.button className="btn btn-outline-info" onClick={onClick} type="button">
+		<AnimatedButton onClick={onClick} {...rest} variant="outline" variantColor="brand">
 			{number.to((value: number) => Math.round(value))}
-		</animated.button>
+		</AnimatedButton>
 	)
 }
-
-export default TimerLabel

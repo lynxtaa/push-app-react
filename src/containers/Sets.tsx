@@ -5,6 +5,8 @@ import { set } from 'idb-keyval'
 import NavPills from 'components/NavPills'
 import PushListContainer from './PushListContainer'
 import useFetchedData from '../hooks/useFetchedData'
+import { Text } from '@chakra-ui/core'
+import Alert from 'components/Alert'
 
 type ScheduleItem = {
 	weekNum: number
@@ -15,20 +17,24 @@ function Sets() {
 	const [schedule, error] = useFetchedData<ScheduleItem[]>(
 		`${process.env.PUBLIC_URL}/schedule.json`,
 	)
+
 	const matchParams = useParams<{ day?: string; week: string }>()
 
 	const { day, week } = matchParams
-
 	useEffect(() => {
 		set('route', { day, week })
 	}, [day, week])
 
 	if (error) {
-		return <h2 className="text-danger">{error.message}</h2>
+		return (
+			<Alert status="error" onClose={() => window.location.reload()}>
+				{error.message}
+			</Alert>
+		)
 	}
 
 	if (!schedule) {
-		return <h2>Loading...</h2>
+		return <Text fontSize="lg">Loading...</Text>
 	}
 
 	if (!day) {
@@ -46,7 +52,7 @@ function Sets() {
 		set,
 	}))
 
-	const links = [1, 2, 3].map(day => ({
+	const links = [1, 2, 3].map((day) => ({
 		link: `/${week}/${day}`,
 		text: `Day ${day}`,
 	}))

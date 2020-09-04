@@ -1,34 +1,21 @@
 import React from 'react'
-import { animated, useSpring, config } from 'react-spring'
+import { Alert as ChakraAlert, AlertIcon, CloseButton, AlertProps } from '@chakra-ui/core'
 
 import Portal from './Portal'
 
-interface Props {
+type Props = {
 	children: React.ReactNode
-	onClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>): void
-}
+	onClose: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+} & AlertProps
 
-const Alert = ({ children, onClick }: Props) => {
-	const spring = useSpring({
-		from: { opacity: 0, height: '0px', marginBottom: '0rem' },
-		to: { opacity: 1, height: '50px', marginBottom: '1rem' },
-		config: config.wobbly,
-	})
-
+export default function Alert({ children, onClose, ...rest }: Props) {
 	return (
 		<Portal id="alerts">
-			<animated.div
-				className="container alert alert-warning alert-dismissible fade show"
-				role="alert"
-				style={spring}
-			>
-				<button type="button" className="close" onClick={onClick} aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+			<ChakraAlert status="info" maxW="2xl" margin="0 auto" {...rest}>
+				<AlertIcon />
 				{children}
-			</animated.div>
+				<CloseButton position="absolute" right="8px" top="8px" onClick={onClose} />
+			</ChakraAlert>
 		</Portal>
 	)
 }
-
-export default Alert

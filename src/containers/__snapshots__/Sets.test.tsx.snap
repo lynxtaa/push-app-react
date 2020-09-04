@@ -1,198 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`if fetch resulted in error, shows error 1`] = `
-<h2
-  class="text-danger"
->
-  Fetching Error
-</h2>
-`;
-
-exports[`if no day in match.params, redirects to /<WEEK>/1 1`] = `
-<div>
-  <ul
-    class="nav nav-pills mb-3"
-  >
-    <li
-      class="nav-item"
-    >
-      <a
-        aria-current="page"
-        class="nav-link active"
-        href="/3/1"
-      >
-        Day 1
-      </a>
-    </li>
-    <li
-      class="nav-item"
-    >
-      <a
-        class="nav-link"
-        href="/3/2"
-      >
-        Day 2
-      </a>
-    </li>
-    <li
-      class="nav-item"
-    >
-      <a
-        class="nav-link"
-        href="/3/3"
-      >
-        Day 3
-      </a>
-    </li>
-  </ul>
-  <ul
-    class="pushlist list-unstyled"
-  >
-    <li
-      style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
-    >
-      <button
-        class="btn btn-outline-secondary w-100"
-        type="button"
-      >
-        10
-      </button>
-    </li>
-    <li
-      style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
-    >
-      <button
-        class="btn btn-outline-secondary w-100"
-        type="button"
-      >
-        12
-      </button>
-    </li>
-    <li
-      style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
-    >
-      <button
-        class="btn btn-outline-secondary w-100"
-        type="button"
-      >
-        7
-      </button>
-    </li>
-    <li
-      style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
-    >
-      <button
-        class="btn btn-outline-secondary w-100"
-        type="button"
-      >
-        7
-      </button>
-    </li>
-    <li
-      style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
-    >
-      <button
-        class="btn btn-outline-secondary w-100"
-        type="button"
-      >
-        9
-      </button>
-    </li>
-  </ul>
-</div>
-`;
-
 exports[`renders sets page 1`] = `
-<h2>
-  Loading...
-</h2>
-`;
-
-exports[`renders sets page 2`] = `
 <div>
   <ul
-    class="nav nav-pills mb-3"
+    class="css-sq7kq3"
   >
     <li
-      class="nav-item"
+      class="css-992tcj"
     >
-      <a
-        aria-current="page"
-        class="nav-link active"
-        href="/1/1"
+      <button
+        class="css-1gaszxs"
+        type="button"
       >
         Day 1
-      </a>
+      </button>
     </li>
     <li
-      class="nav-item"
+      class="css-992tcj"
     >
-      <a
-        class="nav-link"
-        href="/1/2"
+      <button
+        class="css-7muntp"
+        type="button"
       >
         Day 2
-      </a>
+      </button>
     </li>
     <li
-      class="nav-item"
+      class="css-992tcj"
     >
-      <a
-        class="nav-link"
-        href="/1/3"
+      <button
+        class="css-7muntp"
+        type="button"
       >
         Day 3
-      </a>
+      </button>
     </li>
   </ul>
   <ul
-    class="pushlist list-unstyled"
+    class="css-19ndbdu"
   >
     <li
+      class="css-992tcj"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="btn btn-outline-secondary w-100"
+        class="css-159qfxn"
         type="button"
       >
         10
       </button>
     </li>
     <li
+      class="css-992tcj"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="btn btn-outline-secondary w-100"
+        class="css-159qfxn"
         type="button"
       >
         12
       </button>
     </li>
     <li
+      class="css-992tcj"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="btn btn-outline-secondary w-100"
+        class="css-159qfxn"
         type="button"
       >
         7
       </button>
     </li>
     <li
+      class="css-992tcj"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="btn btn-outline-secondary w-100"
+        class="css-159qfxn"
         type="button"
       >
         7
       </button>
     </li>
     <li
+      class="css-992tcj"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="btn btn-outline-secondary w-100"
+        class="css-159qfxn"
         type="button"
       >
         9

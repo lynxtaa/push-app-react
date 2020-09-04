@@ -1,10 +1,9 @@
 import React, { useCallback, useState, useRef } from 'react'
 
-import TimerButton from 'components/TimerButton'
 import Alert from 'components/Alert'
-import ButtonGroup from 'components/ButtonGroup'
 import TimerLabel from 'components/TimerLabel'
 import useInterval from '../hooks/useInterval'
+import { ButtonGroup, Button, Box } from '@chakra-ui/core'
 
 interface Time {
 	seconds: number
@@ -36,13 +35,6 @@ const Timer = ({ times }: Props) => {
 		timerActive ? 1000 : null,
 	)
 
-	const handleClick = useCallback(event => {
-		const value = Number(event.target.value)
-		setCounter(value)
-		setCountdown(value)
-		setTimerActive(false)
-	}, [])
-
 	const resetCountdown = useCallback(() => {
 		setCountdown(counter)
 		setTimerActive(false)
@@ -54,29 +46,41 @@ const Timer = ({ times }: Props) => {
 	}, [])
 
 	return (
-		<div className="mb-3">
+		<Box mb={4}>
 			{countdown === 0 && (
-				<Alert onClick={resetCountdown}>
-					<b>Do next!</b>
+				<Alert onClose={resetCountdown} mb={3}>
+					Do next!
 				</Alert>
 			)}
 
-			<ButtonGroup>
-				{times.map(({ seconds, label }) => (
-					<TimerButton
-						active={counter === seconds}
+			<ButtonGroup spacing={0}>
+				{times.map(({ seconds, label }, i) => (
+					<Button
+						isActive={counter === seconds}
 						key={seconds}
-						onClick={handleClick}
-						value={seconds}
+						borderTopRightRadius="none"
+						borderBottomRightRadius="none"
+						borderTopLeftRadius={i > 0 ? 'none' : undefined}
+						borderBottomLeftRadius={i > 0 ? 'none' : undefined}
+						onClick={() => {
+							setCounter(seconds)
+							setCountdown(seconds)
+							setTimerActive(false)
+						}}
+						variantColor="brand"
 					>
 						{label}
-					</TimerButton>
+					</Button>
 				))}
-				<TimerLabel onClick={timerActive ? resetCountdown : runTimer}>
+				<TimerLabel
+					onClick={timerActive ? resetCountdown : runTimer}
+					borderTopLeftRadius="none"
+					borderBottomLeftRadius="none"
+				>
 					{countdown}
 				</TimerLabel>
 			</ButtonGroup>
-		</div>
+		</Box>
 	)
 }
 

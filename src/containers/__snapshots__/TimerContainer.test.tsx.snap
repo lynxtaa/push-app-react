@@ -2,27 +2,26 @@
 
 exports[`renders timer 1`] = `
 <div
-  class="mb-3"
+  class="css-acwcvw"
 >
   <div
-    class="btn-group"
+    class="css-1baulvz"
   >
     <button
-      class="btn btn-primary active"
+      class="css-mwy6p6"
+      data-active="true"
       type="button"
-      value="60"
     >
       1 min
     </button>
     <button
-      class="btn btn-primary"
+      class="css-13bwko5"
       type="button"
-      value="120"
     >
       2 min
     </button>
     <button
-      class="btn btn-outline-info"
+      class="css-1wc6wq4"
       type="button"
     >
       60

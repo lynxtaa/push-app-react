@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/core'
 import React from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom'
 
@@ -9,12 +10,12 @@ type Props = RouteComponentProps & {
 }
 
 const App = ({ children }: Props) => (
-	<main className="container p-3">
+	<Box as="main" p={3} maxW="2xl" margin="0 auto">
 		<ErrorBoundary>
 			<HeaderContainer />
 			{children}
 		</ErrorBoundary>
-	</main>
+	</Box>
 )
 
 export default withRouter(App)

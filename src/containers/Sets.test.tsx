@@ -1,15 +1,15 @@
 import React from 'react'
-import { render, waitForElement } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import Sets from './Sets'
-import { MemoryRouter, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { set } from 'idb-keyval'
-
-jest.mock('idb-keyval', () => ({ set: jest.fn(), get: jest.fn() }))
+import renderWithProviders from 'testUtils/renderWithProviders'
 
 const setMock = set as jest.Mock
+const fetchMock = window.fetch as jest.Mock
 
 it('renders sets page', async () => {
-	window.fetch = jest.fn().mockResolvedValueOnce({
+	fetchMock.mockResolvedValue({
 		ok: true,
 		json: () =>
 			Promise.resolve([
@@ -24,37 +24,37 @@ it('renders sets page', async () => {
 			]),
 	})
 
-	const { container, getByText } = render(
-		<MemoryRouter initialEntries={['/1/1']} initialIndex={0}>
-			<Route path="/:week(\d)/:day(\d)?">
-				<Sets />
-			</Route>
-		</MemoryRouter>,
+	const { container } = renderWithProviders(
+		<Route path="/:week(\d)/:day(\d)?">
+			<Sets />
+		</Route>,
+		{ initialEntries: ['/1/1'], initialIndex: 0 },
 	)
 
-	expect(container.firstChild).toMatchSnapshot()
-	await waitForElement(() => getByText('12'))
+	await screen.findByText(/loading/i)
+
+	await screen.findByText('12')
+
 	expect(setMock).toHaveBeenCalledWith('route', { week: '1', day: '1' })
+
 	expect(container.firstChild).toMatchSnapshot()
 })
 
 it('if fetch resulted in error, shows error', async () => {
-	window.fetch = jest.fn().mockRejectedValue(new Error('Fetching Error'))
+	fetchMock.mockRejectedValue(new Error('Fetching Error'))
 
-	const { container, getByText } = render(
-		<MemoryRouter initialEntries={['/1/1']} initialIndex={0}>
-			<Route path="/:week(\d)/:day(\d)?">
-				<Sets />
-			</Route>
-		</MemoryRouter>,
+	renderWithProviders(
+		<Route path="/:week(\d)/:day(\d)?">
+			<Sets />
+		</Route>,
+		{ initialEntries: ['/1/1'], initialIndex: 0 },
 	)
 
-	await waitForElement(() => getByText('Fetching Error'))
-	expect(container.firstChild).toMatchSnapshot()
+	await screen.findByText('Fetching Error')
 })
 
 it('if no day in match.params, redirects to /<WEEK>/1', async () => {
-	window.fetch = jest.fn().mockResolvedValueOnce({
+	fetchMock.mockResolvedValue({
 		ok: true,
 		json: () =>
 			Promise.resolve([
@@ -69,14 +69,12 @@ it('if no day in match.params, redirects to /<WEEK>/1', async () => {
 			]),
 	})
 
-	const { container, getByText } = render(
-		<MemoryRouter initialEntries={['/3']} initialIndex={0}>
-			<Route path="/:week(\d)/:day(\d)?">
-				<Sets />
-			</Route>
-		</MemoryRouter>,
+	renderWithProviders(
+		<Route path="/:week(\d)/:day(\d)?">
+			<Sets />
+		</Route>,
+		{ initialEntries: ['/3'], initialIndex: 0 },
 	)
 
-	await waitForElement(() => getByText('9'))
-	expect(container.firstChild).toMatchSnapshot()
+	await screen.findByText('9')
 })

@@ -1,3 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
 
-jest.mock('idb-keyval', () => ({ set: jest.fn(), get: jest.fn() }))
+jest.mock('idb-keyval')
+
+window.fetch = jest.fn().mockResolvedValue(null)
