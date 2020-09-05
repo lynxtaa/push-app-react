@@ -3,9 +3,9 @@ import { Redirect, useParams } from 'react-router-dom'
 import { set } from 'idb-keyval'
 
 import NavPills from 'components/NavPills'
-import PushListContainer from './PushListContainer'
+import PushList from 'components/PushList'
 import useFetchedData from '../hooks/useFetchedData'
-import { Text } from '@chakra-ui/core'
+import { Text, Box } from '@chakra-ui/core'
 import Alert from 'components/Alert'
 
 type ScheduleItem = {
@@ -13,14 +13,13 @@ type ScheduleItem = {
 	days: number[][]
 }
 
-function Sets() {
+export default function Sets() {
 	const [schedule, error] = useFetchedData<ScheduleItem[]>(
 		`${process.env.PUBLIC_URL}/schedule.json`,
 	)
 
-	const matchParams = useParams<{ day?: string; week: string }>()
+	const { day, week } = useParams<{ day?: string; week: string }>()
 
-	const { day, week } = matchParams
 	useEffect(() => {
 		set('route', { day, week })
 	}, [day, week])
@@ -58,11 +57,9 @@ function Sets() {
 	}))
 
 	return (
-		<div>
+		<Box>
 			<NavPills links={links} />
-			<PushListContainer sets={sets} />
-		</div>
+			<PushList sets={sets} />
+		</Box>
 	)
 }
-
-export default Sets

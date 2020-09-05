@@ -1,18 +1,18 @@
 import { List } from '@chakra-ui/core'
 import React, { useState, useEffect } from 'react'
 
-import PushListItem from 'components/PushListItem'
+import PushListItem from './PushListItem'
 
 interface Set {
 	id: string
 	set: number
 }
 
-interface Props {
+type Props = {
 	sets: Set[]
 }
 
-export default function PushListContainer({ sets }: Props) {
+export default function PushList({ sets }: Props) {
 	const [hidden, setHidden] = useState<string[]>([])
 
 	useEffect(() => {

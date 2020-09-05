@@ -1,20 +1,21 @@
+import { ButtonGroup, Button, Box } from '@chakra-ui/core'
 import React, { useCallback, useState, useRef } from 'react'
 
 import Alert from 'components/Alert'
-import TimerLabel from 'components/TimerLabel'
-import useInterval from '../hooks/useInterval'
-import { ButtonGroup, Button, Box } from '@chakra-ui/core'
+import useInterval from 'hooks/useInterval'
 
-interface Time {
+import TimerLabel from './TimerLabel'
+
+type Time = {
 	seconds: number
 	label: string
 }
 
-interface Props {
+type Props = {
 	times: Time[]
 }
 
-const Timer = ({ times }: Props) => {
+export default function Timer({ times }: Props) {
 	const [countdown, setCountdown] = useState<number>(times[0].seconds)
 	const [counter, setCounter] = useState<number>(times[0].seconds)
 	const [timerActive, setTimerActive] = useState<boolean>(false)
@@ -83,5 +84,3 @@ const Timer = ({ times }: Props) => {
 		</Box>
 	)
 }
-
-export default Timer

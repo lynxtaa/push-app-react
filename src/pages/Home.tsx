@@ -7,12 +7,12 @@ interface Data {
 	week?: number
 }
 
-function Home() {
+export default function Home() {
 	const [day, setDay] = useState<number>()
 	const [week, setWeek] = useState<number>()
 
 	useEffect(() => {
-		get<Data>('route').then(data => {
+		get<Data>('route').then((data) => {
 			setDay((data && data.day) || 1)
 			setWeek((data && data.week) || 1)
 		})
@@ -20,5 +20,3 @@ function Home() {
 
 	return day && week ? <Redirect to={`/${week}/${day}`} /> : null
 }
-
-export default Home

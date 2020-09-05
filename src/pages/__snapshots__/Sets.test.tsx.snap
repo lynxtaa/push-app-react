@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders sets page 1`] = `
-<div>
+<div
+  class="css-0"
+>
   <ul
     class="css-sq7kq3"
   >

@@ -1,21 +1,20 @@
 import { Box } from '@chakra-ui/core'
 import React from 'react'
-import { withRouter, RouteComponentProps } from 'react-router-dom'
 
-import HeaderContainer from 'containers/HeaderContainer'
-import ErrorBoundary from 'containers/ErrorBoundary'
+import Header from 'components/Header'
+import ErrorBoundary from 'components/ErrorBoundary'
 
-type Props = RouteComponentProps & {
+type Props = {
 	children: React.ReactNode
 }
 
-const App = ({ children }: Props) => (
-	<Box as="main" p={3} maxW="2xl" margin="0 auto">
-		<ErrorBoundary>
-			<HeaderContainer />
-			{children}
-		</ErrorBoundary>
-	</Box>
-)
-
-export default withRouter(App)
+export default function App({ children }: Props) {
+	return (
+		<Box as="main" p={3} maxW="2xl" margin="0 auto">
+			<ErrorBoundary>
+				<Header />
+				{children}
+			</ErrorBoundary>
+		</Box>
+	)
+}

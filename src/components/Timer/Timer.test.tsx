@@ -2,8 +2,8 @@ import React from 'react'
 import { act, screen } from '@testing-library/react'
 import createMockRaf, { MockRaf } from '@react-spring/mock-raf'
 
-import TimerContainer from './TimerContainer'
-import renderWithProviders from '../testUtils/renderWithProviders'
+import Timer from './Timer'
+import renderWithProviders from 'testUtils/renderWithProviders'
 import userEvent from '@testing-library/user-event'
 import { advanceTo, advanceBy } from 'jest-date-mock'
 
@@ -23,7 +23,7 @@ beforeEach(() => {
 })
 
 it('renders timer', () => {
-	const { container } = renderWithProviders(<TimerContainer times={times} />)
+	const { container } = renderWithProviders(<Timer times={times} />)
 	expect(container.firstChild).toMatchSnapshot()
 })
 
@@ -32,7 +32,7 @@ it('renders timer', () => {
 it.skip('runs timer after click', async () => {
 	jest.useFakeTimers()
 
-	renderWithProviders(<TimerContainer times={times} />)
+	renderWithProviders(<Timer times={times} />)
 
 	const timerButton = screen.getByText('60')
 	userEvent.click(timerButton)
@@ -50,7 +50,7 @@ it.skip('runs timer after click', async () => {
 it.skip('shows alert after countdown', async () => {
 	jest.useFakeTimers()
 
-	const renderResult = renderWithProviders(<TimerContainer times={times} />)
+	const renderResult = renderWithProviders(<Timer times={times} />)
 
 	const timerButton = renderResult.getByText('60')
 	userEvent.click(timerButton)
@@ -69,7 +69,7 @@ it.skip('shows alert after countdown', async () => {
 it.skip('toggles timer', async () => {
 	jest.useFakeTimers()
 
-	renderWithProviders(<TimerContainer times={times} />)
+	renderWithProviders(<Timer times={times} />)
 
 	const timerButton = screen.getByText('60')
 	userEvent.click(timerButton)
@@ -93,7 +93,7 @@ it.skip('toggles timer', async () => {
 it.skip('stops timer when counter is changed', async () => {
 	jest.useFakeTimers()
 
-	renderWithProviders(<TimerContainer times={times} />)
+	renderWithProviders(<Timer times={times} />)
 
 	const timerButton = screen.getByText('60')
 	userEvent.click(timerButton)

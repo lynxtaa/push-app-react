@@ -3,7 +3,7 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import createMockRaf, { MockRaf } from '@react-spring/mock-raf'
 
-import PushListContainer from './PushListContainer'
+import PushList from './PushList'
 import renderWithProviders from 'testUtils/renderWithProviders'
 
 let mockRaf: MockRaf
@@ -20,12 +20,12 @@ const sets = [
 ]
 
 it('renders list', () => {
-	const { container } = renderWithProviders(<PushListContainer sets={sets} />)
+	const { container } = renderWithProviders(<PushList sets={sets} />)
 	expect(container.firstChild).toMatchSnapshot()
 })
 
 it('hides item after click', async () => {
-	renderWithProviders(<PushListContainer sets={sets} />)
+	renderWithProviders(<PushList sets={sets} />)
 
 	const item = screen.getByText('2')
 	userEvent.click(item)
