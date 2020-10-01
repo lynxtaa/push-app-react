@@ -2,7 +2,7 @@
 	"extends": ["config:base"],
 	"assignees": ["lynxtaa"],
 	"timezone": "Europe/Moscow",
-	"schedule": "on the first day of the month",
+	"schedule": "after 10am on the first day of the month",
 	"packageRules": [
 		{
 			"depTypeList": ["devDependencies"],
@@ -11,8 +11,8 @@
 		},
 		{
 			"depTypeList": ["dependencies"],
-			"updateTypes": ["patch"],
-			"groupName": "dependencies (patch)"
+			"updateTypes": ["patch", "minor"],
+			"groupName": "dependencies (non-major)"
 		}
 	]
 }
