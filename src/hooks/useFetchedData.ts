@@ -11,7 +11,13 @@ export default function useFetchedData<T>(url: string): [T | null, Error | null]
 		const abortController = new AbortController()
 
 		fetch(url, { signal: abortController.signal })
-			.then((res) => res.json())
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`Error fetching from ${response.url}: ${response.status}`)
+				}
+
+				return response.json()
+			})
 			.then(setData)
 			.catch((err: Error) => err.name !== 'AbortError' && setError(err))
 
