@@ -1,5 +1,3 @@
-import React from 'react'
-
 import NavPills from 'components/NavPills'
 import Timer from 'components/Timer'
 import { Box, Flex } from '@chakra-ui/core'

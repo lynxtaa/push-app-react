@@ -1,4 +1,3 @@
-import React from 'react'
 import { animated, useSpring } from 'react-spring'
 import { Button, ButtonProps } from '@chakra-ui/core'
 
@@ -13,7 +12,7 @@ export default function TimerLabel({ children, onClick, ...rest }: Props) {
 
 	return (
 		<AnimatedButton onClick={onClick} {...rest} variant="outline" variantColor="brand">
-			{number.interpolate((value: number) => Math.round(value))}
+			{number.interpolate((value: unknown) => Math.round(value as number))}
 		</AnimatedButton>
 	)
 }

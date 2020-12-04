@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/core'
-import React from 'react'
 
 import Header from 'components/Header'
 import ErrorBoundary from 'components/ErrorBoundary'

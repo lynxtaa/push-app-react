@@ -1,4 +1,3 @@
-import React from 'react'
 import { Alert as ChakraAlert, AlertIcon, CloseButton, AlertProps } from '@chakra-ui/core'
 
 import Portal from './Portal'

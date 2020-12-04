@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSpring, animated, config } from 'react-spring'
 import { Button, ListItem } from '@chakra-ui/core'
 

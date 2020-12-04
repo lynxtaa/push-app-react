@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core'
 import { Global, css } from '@emotion/core'

@@ -1,4 +1,3 @@
-import React from 'react'
 import { screen } from '@testing-library/react'
 import Sets from './Sets'
 import { Route } from 'react-router-dom'

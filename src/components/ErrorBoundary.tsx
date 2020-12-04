@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react'
 import { Box, Text } from '@chakra-ui/core'
 
 interface Props {
@@ -10,7 +10,7 @@ interface State {
 	errorInfo?: React.ErrorInfo
 }
 
-class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> {
 	state: State = {}
 
 	componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {

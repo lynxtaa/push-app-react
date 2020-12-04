@@ -1,4 +1,3 @@
-import React from 'react'
 import AppRouter from './AppRouter'
 import { screen } from '@testing-library/react'
 import { get } from 'idb-keyval'

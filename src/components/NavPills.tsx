@@ -1,5 +1,4 @@
 import { List, ListItem, Button } from '@chakra-ui/core'
-import React from 'react'
 import { useHistory, matchPath, useLocation } from 'react-router-dom'
 
 interface Link {

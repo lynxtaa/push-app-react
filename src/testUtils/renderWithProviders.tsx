@@ -1,6 +1,5 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
 import { ThemeProvider, ColorModeProvider } from '@chakra-ui/core'
-import React from 'react'
 import { MemoryRouter } from 'react-router-dom'
 
 import theme from '../theme'

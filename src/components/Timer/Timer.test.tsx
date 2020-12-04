@@ -1,4 +1,3 @@
-import React from 'react'
 import { act, screen } from '@testing-library/react'
 import createMockRaf, { MockRaf } from '@react-spring/mock-raf'
 

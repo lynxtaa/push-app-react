@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { Redirect, useParams } from 'react-router-dom'
 import { set } from 'idb-keyval'
 

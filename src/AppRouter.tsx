@@ -1,4 +1,4 @@
-import React, { StrictMode } from 'react'
+import { StrictMode } from 'react'
 import { HashRouter, Redirect, Route, Switch } from 'react-router-dom'
 import App from 'components/App'
 import Home from 'pages/Home'

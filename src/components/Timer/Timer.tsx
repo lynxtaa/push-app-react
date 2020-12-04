@@ -1,5 +1,5 @@
 import { ButtonGroup, Button, Box } from '@chakra-ui/core'
-import React, { useCallback, useState, useRef } from 'react'
+import { useCallback, useState, useRef } from 'react'
 
 import Alert from 'components/Alert'
 import useInterval from 'hooks/useInterval'

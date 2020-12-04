@@ -1,5 +1,5 @@
 import { List } from '@chakra-ui/core'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 import PushListItem from './PushListItem'
 
