@@ -1,21 +1,26 @@
-import { theme, DefaultTheme, ColorHues } from '@chakra-ui/core'
+import { extendTheme } from '@chakra-ui/react'
 
-const brand: ColorHues = {
-	50: '#f0f0fc',
-	100: '#d6d5df',
-	200: '#bbb8c6',
-	300: '#9f9caf',
-	400: '#848097',
-	500: '#6a667e',
-	600: '#534f62',
-	700: '#3b3947',
-	800: '#23222d',
-	900: '#0e0a14',
-}
-
-const customTheme: DefaultTheme = {
-	...theme,
-	colors: { ...theme.colors, brand } as any,
+export default extendTheme({
+	colors: {
+		brand: {
+			50: '#f0f0fc',
+			100: '#d6d5df',
+			200: '#bbb8c6',
+			300: '#9f9caf',
+			400: '#848097',
+			500: '#6a667e',
+			600: '#534f62',
+			700: '#3b3947',
+			800: '#23222d',
+			900: '#0e0a14',
+		},
+	},
+	global: {
+		'.js-focus-visible :focus:not([data-focus-visible-added])': {
+			outline: 'none',
+			boxShadow: 'none',
+		},
+	},
 	fontSizes: {
 		xs: '14px',
 		sm: '16px',
@@ -28,6 +33,4 @@ const customTheme: DefaultTheme = {
 		'5xl': '64px',
 		'6xl': '144px',
 	},
-}
-
-export default customTheme
+})

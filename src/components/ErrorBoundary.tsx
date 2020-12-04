@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { Box, Text } from '@chakra-ui/core'
+import { Box, Text } from '@chakra-ui/react'
 
 interface Props {
 	children: React.ReactNode

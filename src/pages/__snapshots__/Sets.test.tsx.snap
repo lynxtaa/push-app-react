@@ -5,33 +5,34 @@ exports[`renders sets page 1`] = `
   class="css-0"
 >
   <ul
-    class="css-sq7kq3"
+    class="css-1fblx5z"
+    role="list"
   >
     <li
-      class="css-992tcj"
+      class="css-0"
     >
       <button
-        class="css-1gaszxs"
+        class="chakra-button css-d6j5nr"
         type="button"
       >
         Day 1
       </button>
     </li>
     <li
-      class="css-992tcj"
+      class="css-0"
     >
       <button
-        class="css-7muntp"
+        class="chakra-button css-1izurlz"
         type="button"
       >
         Day 2
       </button>
     </li>
     <li
-      class="css-992tcj"
+      class="css-0"
     >
       <button
-        class="css-7muntp"
+        class="chakra-button css-1izurlz"
         type="button"
       >
         Day 3
@@ -39,58 +40,59 @@ exports[`renders sets page 1`] = `
     </li>
   </ul>
   <ul
-    class="css-19ndbdu"
+    class="css-155za0w"
+    role="list"
   >
     <li
-      class="css-992tcj"
+      class="css-0"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="css-159qfxn"
+        class="chakra-button css-q6bbzb"
         type="button"
       >
         10
       </button>
     </li>
     <li
-      class="css-992tcj"
+      class="css-0"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="css-159qfxn"
+        class="chakra-button css-q6bbzb"
         type="button"
       >
         12
       </button>
     </li>
     <li
-      class="css-992tcj"
+      class="css-0"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="css-159qfxn"
+        class="chakra-button css-q6bbzb"
         type="button"
       >
         7
       </button>
     </li>
     <li
-      class="css-992tcj"
+      class="css-0"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="css-159qfxn"
+        class="chakra-button css-q6bbzb"
         type="button"
       >
         7
       </button>
     </li>
     <li
-      class="css-992tcj"
+      class="css-0"
       style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
     >
       <button
-        class="css-159qfxn"
+        class="chakra-button css-q6bbzb"
         type="button"
       >
         9

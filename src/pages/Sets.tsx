@@ -5,7 +5,7 @@ import { set } from 'idb-keyval'
 import NavPills from 'components/NavPills'
 import PushList from 'components/PushList'
 import useFetchedData from '../hooks/useFetchedData'
-import { Text, Box } from '@chakra-ui/core'
+import { Text, Box } from '@chakra-ui/react'
 import Alert from 'components/Alert'
 
 type ScheduleItem = {

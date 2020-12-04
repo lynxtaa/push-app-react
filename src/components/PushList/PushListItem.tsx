@@ -1,5 +1,5 @@
 import { useSpring, animated, config } from 'react-spring'
-import { Button, ListItem } from '@chakra-ui/core'
+import { Button, ListItem } from '@chakra-ui/react'
 
 interface Props {
 	children: React.ReactNode
@@ -26,7 +26,7 @@ export default function PushListItem({ onClick, children, isHidden }: Props) {
 				),
 			}}
 		>
-			<Button variant="outline" w="100%" onClick={onClick} variantColor="brand">
+			<Button variant="outline" w="100%" onClick={onClick} colorScheme="brand">
 				{children}
 			</Button>
 		</AnimatedListItem>

@@ -1,5 +1,5 @@
 import { render, RenderOptions, RenderResult } from '@testing-library/react'
-import { ThemeProvider, ColorModeProvider } from '@chakra-ui/core'
+import { ChakraProvider } from '@chakra-ui/react'
 import { MemoryRouter } from 'react-router-dom'
 
 import theme from '../theme'
@@ -18,13 +18,11 @@ export default function renderWithProviders(
 	return render(ui, {
 		...rest,
 		wrapper: ({ children }: { children?: React.ReactNode }) => (
-			<ThemeProvider theme={theme}>
-				<ColorModeProvider>
-					<MemoryRouter initialEntries={initialEntries} initialIndex={initialIndex}>
-						{children}
-					</MemoryRouter>
-				</ColorModeProvider>
-			</ThemeProvider>
+			<ChakraProvider theme={theme}>
+				<MemoryRouter initialEntries={initialEntries} initialIndex={initialIndex}>
+					{children}
+				</MemoryRouter>
+			</ChakraProvider>
 		),
 	})
 }

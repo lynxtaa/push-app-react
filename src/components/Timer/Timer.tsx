@@ -1,4 +1,4 @@
-import { ButtonGroup, Button, Box } from '@chakra-ui/core'
+import { ButtonGroup, Button, Box } from '@chakra-ui/react'
 import { useCallback, useState, useRef } from 'react'
 
 import Alert from 'components/Alert'
@@ -68,7 +68,7 @@ export default function Timer({ times }: Props) {
 							setCountdown(seconds)
 							setTimerActive(false)
 						}}
-						variantColor="brand"
+						colorScheme="brand"
 					>
 						{label}
 					</Button>

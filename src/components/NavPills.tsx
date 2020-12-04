@@ -1,4 +1,4 @@
-import { List, ListItem, Button } from '@chakra-ui/core'
+import { List, ListItem, Button } from '@chakra-ui/react'
 import { useHistory, matchPath, useLocation } from 'react-router-dom'
 
 interface Link {
@@ -21,7 +21,7 @@ export default function NavPills({ links }: Props) {
 					<Button
 						onClick={() => history.push(link)}
 						variant={matchPath(location.pathname, { path: link }) ? 'solid' : 'ghost'}
-						variantColor="brand"
+						colorScheme="brand"
 					>
 						{text}
 					</Button>

@@ -1,6 +1,6 @@
 import NavPills from 'components/NavPills'
 import Timer from 'components/Timer'
-import { Box, Flex } from '@chakra-ui/core'
+import { Box, Flex } from '@chakra-ui/react'
 import ColorModeToggle from 'components/ColorModeToggle'
 
 const links = [1, 2, 3, 4, 5, 6].map((week) => ({

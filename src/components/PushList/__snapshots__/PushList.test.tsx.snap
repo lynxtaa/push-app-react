@@ -2,36 +2,37 @@
 
 exports[`renders list 1`] = `
 <ul
-  class="css-19ndbdu"
+  class="css-155za0w"
+  role="list"
 >
   <li
-    class="css-992tcj"
+    class="css-0"
     style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
   >
     <button
-      class="css-159qfxn"
+      class="chakra-button css-q6bbzb"
       type="button"
     >
       1
     </button>
   </li>
   <li
-    class="css-992tcj"
+    class="css-0"
     style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
   >
     <button
-      class="css-159qfxn"
+      class="chakra-button css-q6bbzb"
       type="button"
     >
       2
     </button>
   </li>
   <li
-    class="css-992tcj"
+    class="css-0"
     style="opacity: 0; margin-bottom: 0px; height: 0px; visibility: hidden;"
   >
     <button
-      class="css-159qfxn"
+      class="chakra-button css-q6bbzb"
       type="button"
     >
       3

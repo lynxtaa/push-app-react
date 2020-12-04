@@ -5,23 +5,24 @@ exports[`renders timer 1`] = `
   class="css-acwcvw"
 >
   <div
-    class="css-1baulvz"
+    class="chakra-button__group css-1fszd1v"
+    role="group"
   >
     <button
-      class="css-mwy6p6"
-      data-active="true"
+      class="chakra-button css-b4l5nn"
+      data-active=""
       type="button"
     >
       1 min
     </button>
     <button
-      class="css-13bwko5"
+      class="chakra-button css-9lrt3j"
       type="button"
     >
       2 min
     </button>
     <button
-      class="css-1wc6wq4"
+      class="chakra-button css-aebrch"
       type="button"
     >
       60
